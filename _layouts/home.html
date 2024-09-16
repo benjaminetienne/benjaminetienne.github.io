@@ -34,7 +34,10 @@ layout: base
         {%- if site.show_excerpts -%}
           {{ post.excerpt }}
         {%- endif -%}
+        {% if post.tags.size > 0 %}
         {{ post.tags | capitalize | join: ', '}}
+        {% endif %}
+        
       </li>
       {%- endfor -%}
     </ul>

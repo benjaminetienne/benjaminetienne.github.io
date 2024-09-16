@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Using GPUs on Vertex"
-categories: [vertex,gcp]
+tags: [vertex, gcp]
 author:
 - Benjamin ETIENNE
 meta: "Springfield"
