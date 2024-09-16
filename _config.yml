@@ -10,6 +10,11 @@ description: >
   Head of Data Science & Analytics at Cartier
   I blog therefore I am
 
+collections:
+  notebooks:
+    output: true
+    permalink: /:title
+
 # Build settings
 
 # If you clone the Minima repo and build locally, use this setting.
