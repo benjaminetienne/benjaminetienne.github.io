@@ -1,3 +1,12 @@
+---
+layout: post
+title: "From Notebooks to Pipelines"
+categories: vertex,gcp
+author:
+- Benjamin ETIENNE
+meta: "Springfield"
+---
+
 ![](https://www.google.com/imgres?q=data%20scientist%20slap%20meme&imgurl=https%3A%2F%2Finterviewquery-cms-images.s3-us-west-1.amazonaws.com%2Fabd88d5f-ee43-47ac-8047-5d4b4a5ea758.jpg&imgrefurl=https%3A%2F%2Fwww.interviewquery.com%2Fp%2Fdata-science-memes&docid=i02jkOL9sK17jM&tbnid=KNs2FNnfHRHbAM&vet=12ahUKEwj3xuv9_qaIAxXXgv0HHRX6CeU4ChAzegQIbxAA..i&w=512&h=352&hcb=2&ved=2ahUKEwj3xuv9_qaIAxXXgv0HHRX6CeU4ChAzegQIbxAA)
 
 ## Advocating for AI
@@ -26,7 +35,7 @@ As a respectable Data Scientist, you start by creating a notebook which will hel
 
 We first import libraries which we will use during this article:
 
-```python
+{% highlight python %}
 import catboost as cb
 import pandas as pd
 import sklearn as sk
@@ -39,7 +48,7 @@ from google.cloud import bigquery
 
 %load_ext watermark
 %watermark --packages catboost,pandas,sklearn,numpy,google.cloud.bigquery
-```
+{% endhighlight %}
 catboost             : 1.0.4
 pandas               : 1.4.2
 numpy                : 1.22.4
@@ -50,7 +59,7 @@ google.cloud.bigquery: 3.2.0
 ### Getting and preparing the data
 We will then load the data from BigQuery using the Python Client. Be sure to use your own project id:
 
-```python
+{% highlight python %}
 query = """
     SELECT 
       transactions.user_id,
@@ -74,7 +83,7 @@ query = """
 
 client = bigquery.Client()
 df = client.query(query).to_dataframe()
-```
+{% endhighlight %}
 You should see something like that when looking at the dataframe:
 
 ![](https://miro.medium.com/v2/resize:fit:640/format:webp/1*-9goChd9OtcsoYf88KVpJg.png)
