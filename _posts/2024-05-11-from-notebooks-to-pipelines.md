@@ -9,6 +9,8 @@ meta: "Springfield"
 
 ![](https://www.google.com/imgres?q=data%20scientist%20slap%20meme&imgurl=https%3A%2F%2Finterviewquery-cms-images.s3-us-west-1.amazonaws.com%2Fabd88d5f-ee43-47ac-8047-5d4b4a5ea758.jpg&imgrefurl=https%3A%2F%2Fwww.interviewquery.com%2Fp%2Fdata-science-memes&docid=i02jkOL9sK17jM&tbnid=KNs2FNnfHRHbAM&vet=12ahUKEwj3xuv9_qaIAxXXgv0HHRX6CeU4ChAzegQIbxAA..i&w=512&h=352&hcb=2&ved=2ahUKEwj3xuv9_qaIAxXXgv0HHRX6CeU4ChAzegQIbxAA)
 
+(Article on Medium can be found [here](https://medium.com/towards-data-science/machine-learning-on-gcp-from-dev-to-prod-with-vertex-ai-c9e42c4b366f))
+
 ## Advocating for AI
 There is a misunderstanding (not to say fantasy) which keeps coming back in companies whenever it comes to AI and Machine Learning. People often misjudge the complexity and the skills needed to bring Machine Learning projects to production, either because they do not understand the job, or (even worse) because they think they understand it, whereas they don’t.
 
