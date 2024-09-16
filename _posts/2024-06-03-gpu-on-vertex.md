@@ -32,7 +32,7 @@ BERT stands for Bidirectional Encoder Representations from Transformers and was 
 Sentiment Analysis is a specific task within the NLP domain which objective is to classify text into categories related to the tonality of it. Tonality is often expressed as positive, negative, or neutral. It is very commonly used to analyze verbatims, posts on social media, product reviews, etc.
 
 ## Fine-tuning a BERT model on social media data
-Getting and preparing the data
+### Getting and preparing the data
 The dataset we will use comes from Kaggle, you can download it here : https://www.kaggle.com/datasets/farisdurrani/sentimentsearch (CC BY 4.0 License). In my experiments, I only chose the datasets from Facebook and Twitter.
 
 The following snippet will take the csv files and save 3 splits (training, validation, and test) to where you want. I recommend saving them in Google Cloud Storage.
@@ -42,6 +42,8 @@ You can run the script with:
 ```bash
 python make_splits --output-dir gs://your-bucket/
 ```
+
+And here is the script in itself:
 
 ```python
 import pandas as pd
@@ -76,6 +78,8 @@ if __name__ == '__main__':
     args, _ = parser.parse_known_args()
     make_splits(args.output_dir)
 ```
+
+
 The data should look roughly like this:
 
 
@@ -505,7 +509,7 @@ This is great, but unfortunately, this model will take a long time to train. Ind
 
 No GPU, no party.
 
-**How to use Vertex AI and start the party?**
+> How to use Vertex AI and start the party?
 Short answer : Docker and gcloud.
 
 If you do not have a powerful GPU on your laptop (as most of us do), and/or want to avoid burning your laptop’s cooling fan, you may want to move your script on a Cloud platform such as Google Cloud (disclaimer: I use Google Cloud at my job).
@@ -603,12 +607,13 @@ Launch the script, and navigate to your GCP project, in the Training section und
 
 ![](https://miro.medium.com/v2/resize:fit:720/format:webp/1*VSmqgPskAaeQb2FPuGv4sA.png)
 (image from author)
-Launch the script, and navigate to the console. You should see the job status as “Pending”, and then “Training”.
 
+Launch the script, and navigate to the console. You should see the job status as “Pending”, and then “Training”.
 To ensure the GPU is being used, you can check the job and its ressources :
 
 ![](https://miro.medium.com/v2/resize:fit:720/format:webp/1*Os5MCjlrzZ4RuR0MFmnpfQ.png)
 (image from author)
+
 This indicates that we are training with a GPU, we should therefore expect a significant speed-up now ! Let’s have a look at the logs:
 
 ![](https://miro.medium.com/v2/resize:fit:720/format:webp/1*qsAamE-BdY2lZ3QcTGvQbQ.png)
@@ -623,4 +628,5 @@ How does our model perform ?
 
 ![](https://miro.medium.com/v2/resize:fit:720/format:webp/1*13kcuq9rEO5Pdrqp8MtmvQ.png)
 (image from author)
+
 Time to party !
