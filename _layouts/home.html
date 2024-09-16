@@ -10,7 +10,7 @@ layout: base
   {{ content }}
   {% assign pages = site.pages %}
   {%- for page in pages -%}
-  {{ page.title }}
+  {{ page.url }}
   {%- endfor -%}
 
   {% if site.paginate %}
