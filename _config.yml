@@ -13,7 +13,7 @@ description: >
 collections:
   notebooks:
     output: true
-    permalink: /:title
+    permalink: /notebooks/:title
 
 # Build settings
 
