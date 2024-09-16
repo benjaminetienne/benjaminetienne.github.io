@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "From Notebooks to Pipelines"
-categories: vertex,gcp
+categories: [vertex,gcp]
 author:
 - Benjamin ETIENNE
 meta: "Springfield"
