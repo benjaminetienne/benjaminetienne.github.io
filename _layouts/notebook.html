@@ -2,31 +2,17 @@
 layout: base
 ---
 
-<!DOCTYPE html>
-<html lang="{{ page.lang | default: site.lang | default: "en" }}">
 
-  {%- include head.html -%}
-
-  <body>
-
-    {%- include header.html -%}
-
-    <main class="page-content" aria-label="Content">
+    <div class="page-content" aria-label="Content">
       <div class="wrapper" style="max-width:100%">
         {{ content }}
 
-	<hr>
-	<p>
-	{% include more_posts.html %}
-	
-	<hr>
-	<p>
+	    <hr>
+      <p>
+        {% include more_posts.html %}
+      
+        <hr>
+      <p>
       </div>
 
-    </main>
-
-    {%- include footer.html -%}
-
-  </body>
-
-</html>
+    </div>
