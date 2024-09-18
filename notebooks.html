@@ -8,9 +8,25 @@ permalink: /notebooks/
     <h1 class="page-heading">{{ page.title }}</h1>
   {%- endif -%}
 
-    {% assign pages = site.notebooks %}
+  {% assign pages = site.notebooks %}    
+  <ul class="post-list">
+    {%- assign date_format = site.minima.date_format | default: "%b %-d, %Y" -%}
     {%- for page in pages -%}
-    {{ page.url }}
+    <li>
+      <h3>
+        <a class="post-link" href="{{ page.url | relative_url }}">
+          {{ page.title | escape }}
+        </a>
+      </h3>
+      <!-- {% if post.tags.size > 0 %}
+        {%- for tag in post.tags -%}
+        <span class="badge bg-secondary">{{ tag }}</span>
+        {%- endfor -%}
+      {{ post.tags | join: ', '}}
+      {% endif %} -->
+      
+    </li>
     {%- endfor -%}
+  </ul>
 
 </div>
