@@ -8,10 +8,7 @@ layout: base
   {%- endif -%}
 
   {{ content }}
-  {% assign pages = site.notebooks %}
-  {%- for page in pages -%}
-  {{ page.url }}
-  {%- endfor -%}
+  
 
   {% if site.paginate %}
     {% assign posts = paginator.posts %}
