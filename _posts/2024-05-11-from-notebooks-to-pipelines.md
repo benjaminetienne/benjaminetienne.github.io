@@ -7,7 +7,9 @@ author:
 meta: "Springfield"
 ---
 
-![](https://www.google.com/imgres?q=data%20scientist%20slap%20meme&imgurl=https%3A%2F%2Finterviewquery-cms-images.s3-us-west-1.amazonaws.com%2Fabd88d5f-ee43-47ac-8047-5d4b4a5ea758.jpg&imgrefurl=https%3A%2F%2Fwww.interviewquery.com%2Fp%2Fdata-science-memes&docid=i02jkOL9sK17jM&tbnid=KNs2FNnfHRHbAM&vet=12ahUKEwj3xuv9_qaIAxXXgv0HHRX6CeU4ChAzegQIbxAA..i&w=512&h=352&hcb=2&ved=2ahUKEwj3xuv9_qaIAxXXgv0HHRX6CeU4ChAzegQIbxAA)
+<p align="center">
+  <img src="https://www.google.com/imgres?q=data%20scientist%20slap%20meme&imgurl=https%3A%2F%2Finterviewquery-cms-images.s3-us-west-1.amazonaws.com%2Fabd88d5f-ee43-47ac-8047-5d4b4a5ea758.jpg&imgrefurl=https%3A%2F%2Fwww.interviewquery.com%2Fp%2Fdata-science-memes&docid=i02jkOL9sK17jM&tbnid=KNs2FNnfHRHbAM&vet=12ahUKEwj3xuv9_qaIAxXXgv0HHRX6CeU4ChAzegQIbxAA..i&w=512&h=352&hcb=2&ved=2ahUKEwj3xuv9_qaIAxXXgv0HHRX6CeU4ChAzegQIbxAA" />
+</p>
 
 (Article on Medium can be found [here](https://medium.com/towards-data-science/machine-learning-on-gcp-from-dev-to-prod-with-vertex-ai-c9e42c4b366f))
 
@@ -88,7 +90,9 @@ df = client.query(query).to_dataframe()
 {% endhighlight %}
 You should see something like that when looking at the dataframe:
 
-![](https://miro.medium.com/v2/resize:fit:640/format:webp/1*-9goChd9OtcsoYf88KVpJg.png)
+<p align="center">
+  <img src="https://miro.medium.com/v2/resize:fit:640/format:webp/1*-9goChd9OtcsoYf88KVpJg.png" />
+</p>
 
 These represent the transactions / purchases made by the customers, enriched with customer and product information.
 
@@ -148,7 +152,9 @@ Notice how we removed the last item in the sequence features: this is very impor
 
 We now get this new df_agg dataframe:
 
-![](https://miro.medium.com/v2/resize:fit:720/format:webp/1*4fgjb9NGmqXyJ-a_b15NVw.png)
+<p align="center">
+  <img src="https://miro.medium.com/v2/resize:fit:720/format:webp/1*4fgjb9NGmqXyJ-a_b15NVw.png" />
+</p>
 
 
 Comparing with the original dataframe, we see that user_id 2 has indeed purchased IZOD, Parke & Ronen, and finally Orvis which is not in the target brands.
@@ -545,7 +551,9 @@ IMAGE_URI='eu.gcr.io/{}/{}:{}'.format(PROJECT_ID, IMAGE_NAME, IMAGE_TAG)
 ```
 If everything goes well, you should see something like that:
 
-![](https://miro.medium.com/v2/resize:fit:720/format:webp/1*X8d-pUHixcRtoDr3QSfQSA.png)
+<p align="center">
+  <img src="https://miro.medium.com/v2/resize:fit:720/format:webp/1*X8d-pUHixcRtoDr3QSfQSA.png" />
+</p>
 
 ### Vertex Pipelines, the move to production
 Docker images are the first step to doing some serious Machine Learning in production. The next step is building what we call “pipelines”. Pipelines are a series of operations orchestrated by a framework called Kubeflow. Kubeflow can run on Vertex AI on Google Cloud.
@@ -748,11 +756,15 @@ start_pipeline.run(service_account=<your_service_account_here>)
 
 If everything works well, you will now see your pipeline in the Vertex UI:
 
-![](https://miro.medium.com/v2/resize:fit:720/format:webp/1*tBmKyqQ56ZidTPZwvjLy6g.png)
+<p align="center">
+  <img src="https://miro.medium.com/v2/resize:fit:720/format:webp/1*tBmKyqQ56ZidTPZwvjLy6g.png" />
+</p>
 
 You can click on it and see the different steps:
 
-![](https://miro.medium.com/v2/resize:fit:720/format:webp/1*IHF1eXesttYAQL_Wu3HCuQ.png)
+<p align="center">
+  <img src="https://miro.medium.com/v2/resize:fit:720/format:webp/1*IHF1eXesttYAQL_Wu3HCuQ.png" />
+</p>
 
 ## Conclusion
 Data Science, despite all the no-code/low-code enthusiasts telling you you don’t need to be a developer to do Machine Learning, is a real job. Like every job, it requires skills, concepts and tools which go beyond notebooks.
