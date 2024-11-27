@@ -1,0 +1,24 @@
+site_name: Ben's Personal Blog
+site_url: https://benjaminetienne.github.io/blog
+theme:
+  name: material
+  features:
+    - navigation.indexes
+
+plugins:
+  - mkdocs-jupyter:
+      execute: false
+  - search
+  - blog:
+      blog_dir: .
+      draft: true
+      draft_on_serve: false
+
+markdown_extensions:
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.superfences
