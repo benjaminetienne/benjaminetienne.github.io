@@ -5,13 +5,14 @@ categories:
   - vertex 
   - gcp
 ---
-Jun 3, 2024
 
-(Article on Medium can be found [here](https://medium.com/towards-data-science/no-gpu-no-party-fine-tune-bert-for-sentiment-analysis-with-vertex-ai-custom-jobs-d8fc410e908b))
+
 
 In this article, we will take a concrete use case where we will fine-tune a BERT model on social media comments to perform sentiment analysis. As we will see, training this kind of model on a CPU is very cumbersome and not optimal. We will therefore see how we can leverage Google Cloud Platform to speed up the process by using a GPU for only 60 cents.
 
 <!-- more -->
+
+(Article on Medium can be found [here](https://medium.com/towards-data-science/no-gpu-no-party-fine-tune-bert-for-sentiment-analysis-with-vertex-ai-custom-jobs-d8fc410e908b))
 
 ![](https://img-9gag-fun.9cache.com/photo/abAbEq9_460s.jpg)
 
