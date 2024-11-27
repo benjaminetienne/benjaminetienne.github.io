@@ -1,2 +1,2 @@
-# Ben's Blog
+# Home
 
