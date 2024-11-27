@@ -11,11 +11,9 @@ Build your Personal Assistant with Agents and Tools
 ===================================================
 
 LLMs alone suffer from not being able to access external or real-time data. Learn how to build your personal assistant using LangChain agents and Gemini by grounding it in external sources.
----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-Published in
 
-[Towards Data Science](https://towardsdatascience.com/?source=post_page---byline--048637ac308e--------------------------------)
+Published in [Towards Data Science](https://towardsdatascience.com/?source=post_page---byline--048637ac308e--------------------------------)
 
 
 <!-- more -->
