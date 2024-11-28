@@ -63,6 +63,11 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
+        
+        <a href="#introduction" class="md-skip">
+          Skip to content
+        </a>
+      
     </div>
     <div data-md-component="announce">
       
@@ -515,6 +520,161 @@
   
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introduction" class="md-nav__link">
+    <span class="md-ellipsis">
+      Introduction
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-uber-use-case-bayesian-forecasting" class="md-nav__link">
+    <span class="md-ellipsis">
+      The Uber use case: Bayesian forecasting
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#bayesian-neural-networks" class="md-nav__link">
+    <span class="md-ellipsis">
+      Bayesian Neural Networks
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#uncertainty-under-the-bnn-framework" class="md-nav__link">
+    <span class="md-ellipsis">
+      Uncertainty under the BNN framework
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#getting-and-preparing-the-data" class="md-nav__link">
+    <span class="md-ellipsis">
+      Getting and Preparing the data
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Getting and Preparing the data">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#stationarity" class="md-nav__link">
+    <span class="md-ellipsis">
+      Stationarity
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#holidays-weather" class="md-nav__link">
+    <span class="md-ellipsis">
+      Holidays &amp; Weather
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#choice-of-window-size-backtesting" class="md-nav__link">
+    <span class="md-ellipsis">
+      Choice of window size &amp; Backtesting
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#logging-and-scaling" class="md-nav__link">
+    <span class="md-ellipsis">
+      Logging and scaling
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#building-the-dataset" class="md-nav__link">
+    <span class="md-ellipsis">
+      Building the Dataset
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#defining-the-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      Defining the model
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Defining the model">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#training" class="md-nav__link">
+    <span class="md-ellipsis">
+      Training
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#testing-1-day-forecast-horizon" class="md-nav__link">
+    <span class="md-ellipsis">
+      Testing — 1 day forecast horizon
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#testing-7-days-forecast-horizon" class="md-nav__link">
+    <span class="md-ellipsis">
+      Testing — 7 days forecast horizon
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#conclusion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Conclusion
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -572,7 +732,7 @@
                           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 20a8 8 0 0 0 8-8 8 8 0 0 0-8-8 8 8 0 0 0-8 8 8 8 0 0 0 8 8m0-18a10 10 0 0 1 10 10 10 10 0 0 1-10 10C6.47 22 2 17.5 2 12A10 10 0 0 1 12 2m.5 5v5.25l4.5 2.67-.75 1.23L11 13V7z"/></svg>
                           <span class="md-ellipsis">
                             
-                              1 min read
+                              11 min read
                             
                           </span>
                         </div>
@@ -592,9 +752,120 @@
         
 
 
-  <h1>Time series part3</h1>
+<h2 id="introduction">Introduction</h2>
+<p>LSTM (Long Short-Term Memory) is a type a type of recurrent neural network (RNN) architecture, and was proposed in 1997 by <a href="https://en.wikipedia.org/wiki/Sepp_Hochreiter">Sepp Hochreiter</a> and <a href="https://en.wikipedia.org/wiki/J%C3%BCrgen_Schmidhuber">Jürgen Schmidhuber</a>. RNNs are Deep neural networks specially designed to handle sequential data via recurrence mechanisms. </p>
+<!-- more -->
 
-<p>Work in progress</p>
+<p>They behave in an autoregressive manner, as they keep track of the past via internal states (hence the “memory” part). They have been used extensively for speech recognition, machine translation, speech synthesis, etc.  But what are LSTMs worth when used on time-series ? Well, they can prove to be very useful to model non-linear relationships, assuming the size of the data available is large enough..</p>
+<h2 id="the-uber-use-case-bayesian-forecasting">The Uber use case: Bayesian forecasting</h2>
+<p>When looking for papers implementing time series forecasting with LSTMs, I found a paper written by Uber in 2017, <a href="https://arxiv.org/pdf/1709.01907.pdf">“</a><a href="https://arxiv.org/pdf/1709.01907.pdf"><em>Deep and Confident Prediction for Time Series at Uber</em></a><a href="https://arxiv.org/pdf/1709.01907.pdf">”</a>. The basic question behind this paper is : <strong>how confident can we be (</strong><strong><em>ie how can we quantify uncertainty</em></strong><strong>) making predictions with LSTMs ?</strong></p>
+<p>The approach developped by Uber is a mixture of an encoder-decoder (used as an autoencoder) and a fully connected feed-forward network, used to predict the number of trips in a city based on previous data, or to detect anomalies in real time.</p>
+<p><img alt="" src="https://miro.medium.com/v2/resize:fit:1288/1*GE3Ld86Pr0qF85zaG7XQvA.png" /></p>
+<p>The Uber LSTM forecasting architecture (Zhu &amp; Laptev, 2017)</p>
+<p>The Uber paper is one of the first to use a Bayesian approach for time series forecasting. If you want to know more about Bayesian neural networks and Bayesian inference, you can look at the following links:</p>
+<ul>
+<li><a href="https://towardsdatascience.com/making-your-neural-network-say-i-dont-know-bayesian-nns-using-pyro-and-pytorch-b1c24e6ab8cd"><em>Making your Neural Network Say I Don’t Know</em></a></li>
+<li><a href="https://arxiv.org/pdf/1506.02142.pdf"><em>Dropout as a Bayesian Approximation</em></a></li>
+<li><a href="/@joeDiHare/deep-bayesian-neural-networks-952763a9537"><em>Deep Bayesian Neural Networks</em></a></li>
+<li><em>Bayesian Methods for Hackers</em>, Cameron Davidson-Pilon</li>
+</ul>
+<h2 id="bayesian-neural-networks">Bayesian Neural Networks</h2>
+<p>To put Bayesian neural networks in a nutshell, BNNs estimate a probability distribution over each weight, whereas classical Neural networks try to find the optimal value for each weight. When you hear “Bayesian”, think “probability distribution”.</p>
+<p><strong><em>— But what’s the</em></strong> <strong><em>link between forecasting</em></strong> <strong><em>u</em></strong><strong><em>ncertainty and Bayesian networks</em></strong> <strong><em>?</em></strong></p>
+<p>Imagine two weather experts, Bob and Alice. You both know they are quite good at predicting weather temperatures, but sometimes they get it wrong too. You ask them what will the temperature be tomorrow at 8am so you can know if you need to put your coat on or not.<br />
+Bob says : “It will be 15.6°C”.<br />
+Alice says : “I’m 95 percent sure that the temperature will be between 16 and 18°C”.<br />
+Although they do not seem to agree, who would you trust ?</p>
+<p>Personally, I would trust Alice for two reasons:</p>
+<ul>
+<li><strong>She gave me a</strong> <strong>confidence interval</strong>. I feel more reassured when someone is able to tell me something and how much he/she is confident with this information.</li>
+<li><strong>I do not</strong> <strong>really care about the exact temperature</strong>, because a 1°C difference in temperature will not influence my decision to put on my coat.</li>
+</ul>
+<p>However, had Alice told me “<em>I’m 95 percent sure that the temperature will be between 0°C and 18°C</em>”, I would have said that although she gave me a confidence level, the interval is too large to be informative…</p>
+<h2 id="uncertainty-under-the-bnn-framework">Uncertainty under the BNN framework</h2>
+<p>We usually separate uncertainty in 3 categories : <strong><em>model uncertainty</em></strong>, <strong><em>inherent noise</em></strong>, and <strong><em>model misspecification</em></strong>. The first two are the most famous and are usually referred to as <strong><em>epistemic</em></strong> and <strong><em>aleatoric</em></strong> uncertainty.<br />
+Model (or <em>e__pi__stemic</em>) uncertainty is the uncertainty about our model parameters. The more data you have, the more you can explain (ie “reduce”) this uncertainty. Noise (or <em>aleatoric</em>) uncertainty refers to the noise in the observations. If the noise uncertainty is constant for all samples, we call that <strong><em>homoscedastic aleatoric</em></strong> uncertainty. Otherwise, if some samples are more incertain than others, we will use the term <strong><em>heteroscedastic aleatoric</em></strong>. Noise uncertainty cannot be reduced with more data.</p>
+<p>In the Uber paper, a third uncertainty is used : model misspecification. This uncertainty aims to “ <em>capture the uncertainty when predicting unseen samples with very different patterns from the training data set</em>”.</p>
+<p><strong>— <em>Now why distinguish all of these uncertainties</em></strong> <em>?</em></p>
+<p>Well, precisely because some can be combated with more data (model/epistemic), and some cannot. Some researchers therefore argue that it is more relevant to focus on aleatoric uncertainty given it cannot be reduced even with more data (<a href="https://arxiv.org/pdf/1703.04977.pdf">Kendall &amp; Gal, 2017</a>)</p>
+<p><em>In this article, we will only focus on the model uncertainty, to keep it simple.</em> <em>Uber uses different algorithms to evaluate the two other uncertainty types, but investigating them is beyond the scope of this article.</em></p>
+<h1 id="getting-and-preparing-the-data">Getting and Preparing the data</h1>
+<p>The authors in the paper use 4 years of data over 8 cities in the US to train their model. 3 years are used for training and 1 year for testing. Unfortunately, Uber hasn’t released this data yet, but in order to reproduce results from their paper, we will use data available on the New York Open data <a href="https://www1.nyc.gov/site/tlc/about/tlc-trip-record-data.page">portal</a>. We selected three years of data, spanning from early 2015 to mid 2018. Data was resampled with a daily basis. Here is what the full data looks like</p>
+<p><img alt="" src="https://miro.medium.com/v2/resize:fit:1300/1*fCexDOMzzo6hH3YTFEtIZA.png" /></p>
+<h2 id="stationarity">Stationarity</h2>
+<p>We can notice a couple of things which you should be familiar with if you’re used to analyzing time-series:</p>
+<ol>
+<li>We observe a clear upwards trend</li>
+<li>Mean and variance increase through time</li>
+<li>We also observe spikes which may be caused by external events (holidays and weather ?)</li>
+</ol>
+<p>The first two bullet points are a sign that our series is clearly not stationary. The latter shows that we might need to incorporate external data to our series. Stationarity could be checked with an Augmented Dickey-Fuller test or a KPSS test.  So should we carry out these tests just like we did for ARIMA models ?— The answer is : not necessarily.</p>
+<p>What we want, when we stationarize a series, is to have no change in mean and variance throughout time. This guarantees that if you take an N-points sample to make a forecast , and repeat this with another N-point different samples, then the relationship between your N-point samples and the N+1 point you are trying to predict are the same (ie they are drawn from the same distribution). If the mean and variance are not equal, then you are taking samples from different distributions to make forecasts, and your model will surely fail to generalize.</p>
+<p>Unlike ARIMA, RNNs are able to model nonlinear relationships in the data.<br />
+RNNs, and particularly LSTM and GRU, are able to capture long-term dependencies (provided you have sufficient amounts of data !).  Issues like de-trending and de-seasonalizing are therefore less important, but you should always ask yourself :</p>
+<blockquote>
+<p>Does the data I use for testing follow the same behavior (ie is from the same distribution) as the data I use for training ?</p>
+</blockquote>
+<h2 id="holidays-weather">Holidays &amp; Weather</h2>
+<p>Adding holidays indications is quite straightforward. We use the <em>holidays</em> library in Python to get the holidays dates from 2015 to 2018.<br />
+After adding a holiday boolean to our series, we still observe unexplained spikes…<br />
+A quick look on the internet shows that a couple of them were actually days when New York was hit by extreme weather events such as blizzards and snow storms.<br />
+We plot below the data with holidays marked in red and extreme weather events in green:</p>
+<p><img alt="" src="https://miro.medium.com/v2/resize:fit:1304/1*RNPu0k5h7Vt8163Y7llipg.png" /></p>
+<p>In our dataframe, we therefore have a “<em>counts</em>” column, a “<em>is_holiday</em>” column, and a “<em>is_bad_weather</em>” column. However, given we want to make predictions, we need to “anticipate” these dates as we would do for future predictions, we will therefore create two additional columns indicating that the next day is a holiday or that extreme weather is expected the next day :</p>
+<p>weather = [datetime.datetime.strptime(date, "%Y-%m-%d") for date in ['2018-01-04', '2018-03-21','2017-03-14','2017-02-09','2016-01-23']]holidays = [date for y in range(2015, 2019) for date, _ in sorted(holidays.US(years=y).items())]df['is_holiday'] = np.where(df.index.isin(holidays), 1, 0)<br />
+df['bad_weather'] = np.where(df.index.isin(weather), 1, 0)<br />
+df['next_is_holiday'] = df.is_holiday.shift(-1)<br />
+df['next_bad_weather'] = df.bad_weather.shift(-1)</p>
+<h2 id="choice-of-window-size-backtesting">Choice of window size &amp; Backtesting</h2>
+<p>When doing time series forecasting you might hear about <strong><em>backtesting</em></strong>. Backtesting is a procedure used during training which consists in splitting your data into chunks, in an incremental manner. At each iteration, a chunk is used as your training set. You then try to predict 1 or more values ahead of your chunk. Two approaches can be used, <em>expanding</em> and <em>sliding</em> windows:</p>
+<p><img alt="" src="https://miro.medium.com/v2/resize:fit:1350/1*473sUTkrFKDQsN4n2pdQXA.png" /></p>
+<p>source: <a href="https://www.datapred.com/blog/the-basics-of-backtesting">https://www.datapred.com/blog/the-basics-of-backtesting</a></p>
+<p>In our case study, the authors use samples consisting of 28-days sliding windows with step size equal to 1, used to predict the next value (1-step ahead forecast).</p>
+<h2 id="logging-and-scaling">Logging and scaling</h2>
+<p>In the paper, the authors start by taking the log of the data to “ <em>alleviate exponential effects</em>”. They then within each window substract the first value of the window to remove the trend and train the network on fluctuations with regard to the first value of the window(<em>eq(1)</em>). Other approaches can also be thought of, such as substracting the first value and dividing by the first value (<em>eq(2)</em>):</p>
+<p><img alt="" src="https://miro.medium.com/v2/resize:fit:686/1*1S6f9lsmo8O7Fsh5QEeRjg.png" /></p>
+<h1 id="building-the-dataset">Building the Dataset</h1>
+<p>Our dataset will be a generator yielding batches of sliding windows (each batch is the previous batch shifted of 1 value in the future). To follow the paper’s instructions, we will also substract, within each batch, the first value to all other values. Each batch is then split between 28-days samples and their 1-day targets.</p>
+<h1 id="defining-the-model">Defining the model</h1>
+<p>We will use PyTorch to define our model. A simple reason for that is that we will use dropout during inference and that it is simple to implement in PyTorch. We will start by using a simple LSTM network as defined in the paper: 1 LSTM layer with 128 units, 1 LSTM layer with 32 units, and a fully connected layer with 1 output. Dropout is added after each layer.</p>
+<p><strong><em>— An aparté on Dropout<br />
+</em></strong>Dropout can be seen as a way of doing Bayesian inference (though there is still a debate around this). Technically, dropout is the process used in neural networks consisting in randomly dropping units (along with their connections).<br />
+The fact of randomly turning neurons on and off is roughly equivalent to performing a sampling of a Bernoulli distribution, and therefore “simulates” the mechanics of a Bayesian Neural Network (where weights are distributions, and not single values). Applying dropout is a bit like if we were “sampling” from the network. And if we repeat this process several times duting inference, we will get different predictions with which we can estimate a distribution and eventually, uncertainty ! To sum up:</p>
+<p><img alt="" src="https://miro.medium.com/v2/resize:fit:1400/1*i3qGMn9ZiH6UXP03fKoMjg.png" /></p>
+<p>Let’s now define the model by adding dropout layers between each LSTM layer (notice how <em>train</em> is set to True so that Dropout is used during training and testing)</p>
+<h2 id="training">Training</h2>
+<p>We train for 5 epochs, with an Adam optimizer and learning rate set to 0.001, and batch_size of 1.</p>
+<p>Results :</p>
+<p><img alt="" src="https://miro.medium.com/v2/resize:fit:1400/1*7sSbsmbJM5UYf-JmndUk0A.png" /></p>
+<p>Fitted values on the train set</p>
+<h2 id="testing-1-day-forecast-horizon">Testing — 1 day forecast horizon</h2>
+<p>One of the key interests of this paper is the estimation of uncertainty.</p>
+<blockquote>
+<p>Specifically, stochastic dropouts are applied after each hidden layer, and the model output can be approximately viewed as a random sample generated from the posterior predictive distribution. <strong>As a result, the model uncertainty can be estimated by the sample variance of the model predictions in a few repetitions.</strong></p>
+</blockquote>
+<p>The idea behind this paper is therefore to run several times the model with random dropout, which will yield different output values. We can then compute the empirical mean and variance of our outputs to get confidence intervals for each time step !</p>
+<p>For each step, we predict 100 values. All values are different given we keep the dropout set. This allows us to simulate sampling from our network (in fact, Dropout is closely linked to Bayesian Neural Networks, given that by randomly disconnecting weights, it simulates a probability distribution). We take the average of these 100 values as our predicted mean, and the standard deviation of our 100 values which will be used for our confidence intervals. Assuming that our predictions are drawn from a normal distribution <em>N</em>(<em>μ</em>, <em>σ²</em>) — with a mean <em>μ</em> equal to our empirical mean and a standard deviation <em>σ</em> equal to our empirical standard error —, we can then estimate confidence intervals. In our case, it is given by :</p>
+<p><img alt="" src="https://miro.medium.com/v2/resize:fit:978/1*QIZGDhphldsz1c6R_774UA.png" /></p>
+<p><img alt="" src="https://miro.medium.com/v2/resize:fit:1400/1*-_lbPeWvwKk1EieX3Tf9zQ.png" /></p>
+<p>Predicted values and uncertainty intervals</p>
+<p>The prediction and the test curves seem to be quite close ! However, we need to find a metric to see how our model performs.</p>
+<p>If we look at the empirical coverage of 95% predictive intervals (ie the number of true test values included in the predicted 95% confidence intervals), we obtain a value of 28.51%, far from the values obtained on the test set in the paper…When we take the 99% CI, this value goes up to 44% coverage. This is not a great result, but keep in mind our confidence interval is quite small given we only predict model uncertainty…</p>
+<h2 id="testing-7-days-forecast-horizon">Testing — 7 days forecast horizon</h2>
+<p>Results on a single day forecast are not so good for a prediction model, and still we are not asking a lot to our model as we are asking for a very short prediction horizon. What if we trained our model to predict larger horizon forecasts ?</p>
+<h1 id="conclusion">Conclusion</h1>
+<p><strong>LSTMs show interesting perspectives for modelling time series due to their ability to capture long time dependencies, but should be used only for large datasets</strong>. Never expect your RNN to give good results on a 100-sample dataset ! The balance between the number of parameters in a neural network and the size of the data available is important to avoid overfitting. Nikolay Laptev, one of the authors of the Uber paper, concludes by saying that :</p>
+<blockquote>
+<p><strong>Classical models</strong> are best for:<br />
+○ Short or unrelated time-series<br />
+○ Known state of world</p>
+<p><strong>Neural Network</strong> is best for:<br />
+○ A lot of time-series<br />
+○ Long time-series<br />
+○ Hidden interactions<br />
+○ Explanation is not important</p>
+</blockquote>
+<p><strong><em>Learn more about time series in</em></strong> <a href="https://towardsdatascience.com/time-series-in-python-exponential-smoothing-and-arima-processes-2c67f2a52788"><strong><em>Part 1</em></strong></a> <strong><em>and</em></strong> <a href="https://towardsdatascience.com/time-series-in-python-part-2-dealing-with-seasonal-data-397a65b74051"><strong><em>Part 2</em></strong></a> <strong><em>!</em></strong></p>
 
 
 
