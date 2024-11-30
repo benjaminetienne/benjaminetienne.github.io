@@ -4,6 +4,8 @@ date: 2024-06-03
 categories:
   - vertex 
   - gcp
+  - llm
+  - pytorch
 ---
 
 

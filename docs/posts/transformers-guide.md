@@ -2,7 +2,8 @@
 slug: "A Complete Guide to Write your own Transformers"
 date: 2024-02-24
 categories:
-  - ai 
+  - transformers
+  - pytorch
 ---
 
 An end-to-end implementation of a Pytorch Transformer, in which we will cover key concepts such as self-attention, encoders, decoders, and much more.

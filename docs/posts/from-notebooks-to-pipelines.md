@@ -4,6 +4,8 @@ date: 2024-05-11
 categories:
   - vertex
   - gcp 
+  - classification
+  - catboost
 ---
 
 ## Advocating for AI

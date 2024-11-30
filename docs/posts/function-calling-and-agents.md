@@ -3,8 +3,9 @@ slug: "Ground your chatbot with function calling"
 draft: true
 date: 2024-11-24
 categories:
-  - vertex 
-  - gcp
+  - agents 
+  - langchain
+  - gemini
 ---
 
 Build your Personal Assistant with Agents and Tools
