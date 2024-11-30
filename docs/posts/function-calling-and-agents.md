@@ -370,7 +370,7 @@ def list_tables(project: str, dataset_id: str) -> list:
         return [table.table_id for table in response]
 
     except Exception as e:
-        return f"The dataset {params['dataset_id']} is not found in the {params['project']} project, please specify the dataset and project"
+        return f"The dataset {dataset_id} is not found in the {project} project, please specify the dataset and project"
 ```
 
 Add once done, we add our functions to our LangChain toolbox !
@@ -391,6 +391,11 @@ To build our agent, we will use the `AgentExecutor`object from LangChain. This o
 Let’s first choose our LLM:
 
 ```py
+from langchain.agents import AgentExecutor, create_tool_calling_agent
+from langchain_core.prompts import ChatPromptTemplate
+from langchain_google_vertexai import ChatVertexAI
+
+
 gemini_llm = ChatVertexAI(model="gemini-1.5-flash")
 ```
 
