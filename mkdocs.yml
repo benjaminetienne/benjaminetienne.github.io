@@ -4,6 +4,8 @@ theme:
   name: material
   features:
     - navigation.indexes
+  palette:
+    primary: blue
 
 plugins:
   - mkdocs-jupyter:
