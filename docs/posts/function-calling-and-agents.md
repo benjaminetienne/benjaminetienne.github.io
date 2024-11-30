@@ -1,6 +1,5 @@
 ---
 slug: "Ground your chatbot with function calling"
-draft: true
 date: 2024-11-24
 categories:
   - agents 
