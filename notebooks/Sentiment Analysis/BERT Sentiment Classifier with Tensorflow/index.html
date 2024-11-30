@@ -3151,141 +3151,152 @@ Positive: 0.05%
 </div>
 </div>
 </div>
-</div># %%writefile ../app/src/models/tf_bert.py
-import pandas as pd
-import numpy as np
-import argparse
-import tensorflow as tf
-import tensorflow_hub as hub
-import tensorflow_text as text
-import logging
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=10231efe">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<div class="highlight"><pre><span></span><span class="c1"># %%writefile ../app/   msrc/models/tf_bert.py</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">argparse</span>
+<span class="kn">import</span> <span class="nn">tensorflow</span> <span class="k">as</span> <span class="nn">tf</span>
+<span class="kn">import</span> <span class="nn">tensorflow_hub</span> <span class="k">as</span> <span class="nn">hub</span>
+<span class="kn">import</span> <span class="nn">tensorflow_text</span> <span class="k">as</span> <span class="nn">text</span>
+<span class="kn">import</span> <span class="nn">logging</span>
 
-from sklearn.model_selection import train_test_split
+<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span>
 
-logging.basicConfig(format='%(asctime)s [%(levelname)s]: %(message)s', level=logging.DEBUG)
-logging.getLogger().setLevel(logging.INFO)
+<span class="n">logging</span><span class="o">.</span><span class="n">basicConfig</span><span class="p">(</span><span class="nb">format</span><span class="o">=</span><span class="s1">'</span><span class="si">%(asctime)s</span><span class="s1"> [</span><span class="si">%(levelname)s</span><span class="s1">]: </span><span class="si">%(message)s</span><span class="s1">'</span><span class="p">,</span> <span class="n">level</span><span class="o">=</span><span class="n">logging</span><span class="o">.</span><span class="n">DEBUG</span><span class="p">)</span>
+<span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">()</span><span class="o">.</span><span class="n">setLevel</span><span class="p">(</span><span class="n">logging</span><span class="o">.</span><span class="n">INFO</span><span class="p">)</span>
 
-BERT_MODEL_NAME = 'small_bert/bert_en_uncased_L-2_H-128_A-2'
-TOKENIZER_URL = 'https://tfhub.dev/tensorflow/bert_en_uncased_preprocess/3'
-BERT_MODEL_URL = 'https://tfhub.dev/tensorflow/small_bert/bert_en_uncased_L-2_H-128_A-2/1'
+<span class="n">BERT_MODEL_NAME</span> <span class="o">=</span> <span class="s1">'small_bert/bert_en_uncased_L-2_H-128_A-2'</span>
+<span class="n">TOKENIZER_URL</span> <span class="o">=</span> <span class="s1">'https://tfhub.dev/tensorflow/bert_en_uncased_preprocess/3'</span>
+<span class="n">BERT_MODEL_URL</span> <span class="o">=</span> <span class="s1">'https://tfhub.dev/tensorflow/small_bert/bert_en_uncased_L-2_H-128_A-2/1'</span>
 
 
-class SentimentBERT(tf.keras.Model):
-    def __init__(self):
-        super().__init__()
-        self.tokenizer = hub.KerasLayer(TOKENIZER_URL, name='tokenizer')
-        self.bert_model = hub.KerasLayer(BERT_MODEL_URL, trainable=True, name='bert_model')
-        self.dropout = tf.keras.layers.Dropout(0.1)
-        self.final = tf.keras.layers.Dense(3, activation=None)
+<span class="k">class</span> <span class="nc">SentimentBERT</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">tokenizer</span> <span class="o">=</span> <span class="n">hub</span><span class="o">.</span><span class="n">KerasLayer</span><span class="p">(</span><span class="n">TOKENIZER_URL</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">'tokenizer'</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">bert_model</span> <span class="o">=</span> <span class="n">hub</span><span class="o">.</span><span class="n">KerasLayer</span><span class="p">(</span><span class="n">BERT_MODEL_URL</span><span class="p">,</span> <span class="n">trainable</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">'bert_model'</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">dropout</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">Dropout</span><span class="p">(</span><span class="mf">0.1</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">final</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">Dense</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
         
-    def call(self, inputs):
-        x = self.tokenizer(inputs)
-        x = self.bert_model(x)
-        x = self.dropout(x['pooled_output'])
-        out = self.final(x)
-        return out
+    <span class="k">def</span> <span class="nf">call</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">inputs</span><span class="p">):</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">tokenizer</span><span class="p">(</span><span class="n">inputs</span><span class="p">)</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">bert_model</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">dropout</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="s1">'pooled_output'</span><span class="p">])</span>
+        <span class="n">out</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">final</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">out</span>
     
     
-def train_and_evaluate(**params):
+<span class="k">def</span> <span class="nf">train_and_evaluate</span><span class="p">(</span><span class="o">**</span><span class="n">params</span><span class="p">):</span>
     
-    epochs = int(params.get('epochs'))
-    batch_size = int(params.get('batch_size'))
-    learning_rate = float(params.get('learning_rate'))
+    <span class="n">epochs</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">params</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">'epochs'</span><span class="p">))</span>
+    <span class="n">batch_size</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">params</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">'batch_size'</span><span class="p">))</span>
+    <span class="n">learning_rate</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">params</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">'learning_rate'</span><span class="p">))</span>
     
-    df=pd.concat([
-        pd.read_csv("data/farisdurrani/twitter_filtered.csv"),
-        pd.read_csv("data/farisdurrani/facebook_filtered.csv")
-    ])
-    df = df.dropna(subset=['sentiment'], axis=0)
-    df['Target'] = df['sentiment'].apply(lambda x: 1 if x==0 else np.sign(x)+1).astype(int)
+    <span class="n">df</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span>
+        <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">"data/farisdurrani/twitter_filtered.csv"</span><span class="p">),</span>
+        <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">"data/farisdurrani/facebook_filtered.csv"</span><span class="p">)</span>
+    <span class="p">])</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">dropna</span><span class="p">(</span><span class="n">subset</span><span class="o">=</span><span class="p">[</span><span class="s1">'sentiment'</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+    <span class="n">df</span><span class="p">[</span><span class="s1">'Target'</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">'sentiment'</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="mi">1</span> <span class="k">if</span> <span class="n">x</span><span class="o">==</span><span class="mi">0</span> <span class="k">else</span> <span class="n">np</span><span class="o">.</span><span class="n">sign</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
 
-    X_train, _X, y_train, _y = train_test_split(df['bodyText'], df['Target'], stratify=df['Target'], test_size=0.2)
-    X_val, X_test, y_val, y_test = train_test_split(_X, _y, stratify=_y, test_size=0.5)
+    <span class="n">X_train</span><span class="p">,</span> <span class="n">_X</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">_y</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">'bodyText'</span><span class="p">],</span> <span class="n">df</span><span class="p">[</span><span class="s1">'Target'</span><span class="p">],</span> <span class="n">stratify</span><span class="o">=</span><span class="n">df</span><span class="p">[</span><span class="s1">'Target'</span><span class="p">],</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.2</span><span class="p">)</span>
+    <span class="n">X_val</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_val</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">_X</span><span class="p">,</span> <span class="n">_y</span><span class="p">,</span> <span class="n">stratify</span><span class="o">=</span><span class="n">_y</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
     
-    logging.info(f"Train : ({X_train.shape, y_train.shape}) samples")
-    logging.info(f"Val : ({X_val.shape, y_val.shape}) samples")
-    logging.info(f"Test : ({X_test.shape, y_test.shape}) samples")
+    <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Train : (</span><span class="si">{</span><span class="n">X_train</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span><span class="w"> </span><span class="n">y_train</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">) samples"</span><span class="p">)</span>
+    <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Val : (</span><span class="si">{</span><span class="n">X_val</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span><span class="w"> </span><span class="n">y_val</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">) samples"</span><span class="p">)</span>
+    <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Test : (</span><span class="si">{</span><span class="n">X_test</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span><span class="w"> </span><span class="n">y_test</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">) samples"</span><span class="p">)</span>
     
-    classifier = SentimentBERT()
-    loss_fn = tf.keras.losses.SparseCategoricalCrossentropy(from_logits=True)
-    metric = tf.metrics.SparseCategoricalAccuracy()
-    optimizer = tf.keras.optimizers.Adam(learning_rate=learning_rate)
+    <span class="n">classifier</span> <span class="o">=</span> <span class="n">SentimentBERT</span><span class="p">()</span>
+    <span class="n">loss_fn</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">losses</span><span class="o">.</span><span class="n">SparseCategoricalCrossentropy</span><span class="p">(</span><span class="n">from_logits</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">metric</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">metrics</span><span class="o">.</span><span class="n">SparseCategoricalAccuracy</span><span class="p">()</span>
+    <span class="n">optimizer</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">optimizers</span><span class="o">.</span><span class="n">Adam</span><span class="p">(</span><span class="n">learning_rate</span><span class="o">=</span><span class="n">learning_rate</span><span class="p">)</span>
     
-    classifier.compile(optimizer=optimizer, loss=loss_fn, metrics=metric)
+    <span class="n">classifier</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="n">optimizer</span><span class="o">=</span><span class="n">optimizer</span><span class="p">,</span> <span class="n">loss</span><span class="o">=</span><span class="n">loss_fn</span><span class="p">,</span> <span class="n">metrics</span><span class="o">=</span><span class="n">metric</span><span class="p">)</span>
     
-    stopping = tf.keras.callbacks.EarlyStopping(
-        monitor='val_loss', 
-        min_delta=0, 
-        patience=10, 
-        verbose=2, 
-        mode='min',
-        baseline=None, 
-        restore_best_weights=True
-    )
+    <span class="n">stopping</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">callbacks</span><span class="o">.</span><span class="n">EarlyStopping</span><span class="p">(</span>
+        <span class="n">monitor</span><span class="o">=</span><span class="s1">'val_loss'</span><span class="p">,</span> 
+        <span class="n">min_delta</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> 
+        <span class="n">patience</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> 
+        <span class="n">verbose</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> 
+        <span class="n">mode</span><span class="o">=</span><span class="s1">'min'</span><span class="p">,</span>
+        <span class="n">baseline</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> 
+        <span class="n">restore_best_weights</span><span class="o">=</span><span class="kc">True</span>
+    <span class="p">)</span>
 
-    logging.info(f'Training model with {BERT_MODEL_NAME}')
-    if args.dry_run:
-        logging.info("Dry run mode")
-        epochs = 1
-        steps_per_epoch = 1
-    else:
-        steps_per_epoch = None
+    <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s1">'Training model with </span><span class="si">{</span><span class="n">BERT_MODEL_NAME</span><span class="si">}</span><span class="s1">'</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">args</span><span class="o">.</span><span class="n">dry_run</span><span class="p">:</span>
+        <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">"Dry run mode"</span><span class="p">)</span>
+        <span class="n">epochs</span> <span class="o">=</span> <span class="mi">1</span>
+        <span class="n">steps_per_epoch</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">steps_per_epoch</span> <span class="o">=</span> <span class="kc">None</span>
         
-    history = classifier.fit(
-        x=X_train.values,
-        y=y_train.values,
-        validation_data=(X_val.values, y_val.values),
-        epochs=epochs,
-        batch_size=batch_size,
-        steps_per_epoch=steps_per_epoch,
-        callbacks=[stopping])
+    <span class="n">history</span> <span class="o">=</span> <span class="n">classifier</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span>
+        <span class="n">x</span><span class="o">=</span><span class="n">X_train</span><span class="o">.</span><span class="n">values</span><span class="p">,</span>
+        <span class="n">y</span><span class="o">=</span><span class="n">y_train</span><span class="o">.</span><span class="n">values</span><span class="p">,</span>
+        <span class="n">validation_data</span><span class="o">=</span><span class="p">(</span><span class="n">X_val</span><span class="o">.</span><span class="n">values</span><span class="p">,</span> <span class="n">y_val</span><span class="o">.</span><span class="n">values</span><span class="p">),</span>
+        <span class="n">epochs</span><span class="o">=</span><span class="n">epochs</span><span class="p">,</span>
+        <span class="n">batch_size</span><span class="o">=</span><span class="n">batch_size</span><span class="p">,</span>
+        <span class="n">steps_per_epoch</span><span class="o">=</span><span class="n">steps_per_epoch</span><span class="p">,</span>
+        <span class="n">callbacks</span><span class="o">=</span><span class="p">[</span><span class="n">stopping</span><span class="p">])</span>
     
-    if args.dry_run:
-        # If dry run, we do not run the evaluation
-        return None
+    <span class="k">if</span> <span class="n">args</span><span class="o">.</span><span class="n">dry_run</span><span class="p">:</span>
+        <span class="c1"># If dry run, we do not run the evaluation</span>
+        <span class="k">return</span> <span class="kc">None</span>
     
-    res = classifier.evaluate(
-        x=X_test.values, 
-        y=y_test.values,
-        verbose=2
-    )
+    <span class="n">res</span> <span class="o">=</span> <span class="n">classifier</span><span class="o">.</span><span class="n">evaluate</span><span class="p">(</span>
+        <span class="n">x</span><span class="o">=</span><span class="n">X_test</span><span class="o">.</span><span class="n">values</span><span class="p">,</span> 
+        <span class="n">y</span><span class="o">=</span><span class="n">y_test</span><span class="o">.</span><span class="n">values</span><span class="p">,</span>
+        <span class="n">verbose</span><span class="o">=</span><span class="mi">2</span>
+    <span class="p">)</span>
     
-    metrics = {
-        'train_acc': history.history['accuracy'],
-        'val_acc': history.history['val_accuracy'],
-        'test_acc': res[-1],
-    }
-    logging.info(metrics)
+    <span class="n">metrics</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s1">'train_acc'</span><span class="p">:</span> <span class="n">history</span><span class="o">.</span><span class="n">history</span><span class="p">[</span><span class="s1">'accuracy'</span><span class="p">],</span>
+        <span class="s1">'val_acc'</span><span class="p">:</span> <span class="n">history</span><span class="o">.</span><span class="n">history</span><span class="p">[</span><span class="s1">'val_accuracy'</span><span class="p">],</span>
+        <span class="s1">'test_acc'</span><span class="p">:</span> <span class="n">res</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span>
+    <span class="p">}</span>
+    <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="n">metrics</span><span class="p">)</span>
     
-    # save model and architecture to single file
-    if params.get('job_dir') is None:
-        logging.warning("No job dir provided, model will not be saved")
-    else:
-        logging.info("Saving model to {} ".format(params.get('job_dir')))
-        classifier.save(params.get('job_dir'))
-    logging.info("Bye bye")
+    <span class="c1"># save model and architecture to single file</span>
+    <span class="k">if</span> <span class="n">params</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">'job_dir'</span><span class="p">)</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">logging</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="s2">"No job dir provided, model will not be saved"</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">"Saving model to </span><span class="si">{}</span><span class="s2"> "</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">params</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">'job_dir'</span><span class="p">)))</span>
+        <span class="n">classifier</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">params</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">'job_dir'</span><span class="p">))</span>
+    <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">"Bye bye"</span><span class="p">)</span>
     
     
-if __name__ == '__main__':
-    # Create arguments here
-    parser = argparse.ArgumentParser()
-    parser.add_argument('--job-dir', required=True)
-    parser.add_argument('--epochs', type=float, default=2)
-    parser.add_argument('--batch-size', type=float, default=1024)
-    parser.add_argument('--learning-rate', type=float, default=0.01)
-    parser.add_argument('--dry-run', action="store_true")
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">'__main__'</span><span class="p">:</span>
+    <span class="c1"># Create arguments here</span>
+    <span class="n">parser</span> <span class="o">=</span> <span class="n">argparse</span><span class="o">.</span><span class="n">ArgumentParser</span><span class="p">()</span>
+    <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">'--job-dir'</span><span class="p">,</span> <span class="n">required</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">'--epochs'</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">float</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+    <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">'--batch-size'</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">float</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="mi">1024</span><span class="p">)</span>
+    <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">'--learning-rate'</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">float</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="mf">0.01</span><span class="p">)</span>
+    <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">'--dry-run'</span><span class="p">,</span> <span class="n">action</span><span class="o">=</span><span class="s2">"store_true"</span><span class="p">)</span>
 
-    # Parse them
-    args, _ = parser.parse_known_args()
+    <span class="c1"># Parse them</span>
+    <span class="n">args</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">parser</span><span class="o">.</span><span class="n">parse_known_args</span><span class="p">()</span>
 
-    # Execute training
-    train_and_evaluate(
-        job_dir=args.job_dir,
-        batch_size=args.batch_size,
-        learning_rate=args.learning_rate,
-        epochs=args.epochs
-    )
-<div class="jp-Cell jp-CodeCell jp-Notebook-cell">
+    <span class="c1"># Execute training</span>
+    <span class="n">train_and_evaluate</span><span class="p">(</span>
+        <span class="n">job_dir</span><span class="o">=</span><span class="n">args</span><span class="o">.</span><span class="n">job_dir</span><span class="p">,</span>
+        <span class="n">batch_size</span><span class="o">=</span><span class="n">args</span><span class="o">.</span><span class="n">batch_size</span><span class="p">,</span>
+        <span class="n">learning_rate</span><span class="o">=</span><span class="n">args</span><span class="o">.</span><span class="n">learning_rate</span><span class="p">,</span>
+        <span class="n">epochs</span><span class="o">=</span><span class="n">args</span><span class="o">.</span><span class="n">epochs</span>
+    <span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
 <div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=3a32e5c2">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
@@ -3354,14 +3365,14 @@ scikit-learn==1.3.2</div>
 </div>
 </clipboard-copy>
 </div>
-<div class="highlight-ipynb hl-python"><pre><span></span><span class="n">PROJECT_ID</span> <span class="o">=</span> <span class="s1">'car-eu-dataoffice-sco-nprd'</span>
+<div class="highlight-ipynb hl-python"><pre><span></span><span class="n">PROJECT_ID</span> <span class="o">=</span> <span class="o">...</span>
 <span class="n">IMAGE_NAME</span><span class="o">=</span><span class="sa">f</span><span class="s1">'bert_tf_sentiment'</span>
 <span class="n">IMAGE_TAG</span><span class="o">=</span><span class="s1">'latest'</span>
 <span class="n">IMAGE_URI</span><span class="o">=</span><span class="s1">'eu.gcr.io/</span><span class="si">{}</span><span class="s1">/</span><span class="si">{}</span><span class="s1">:</span><span class="si">{}</span><span class="s1">'</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">PROJECT_ID</span><span class="p">,</span> <span class="n">IMAGE_NAME</span><span class="p">,</span> <span class="n">IMAGE_TAG</span><span class="p">)</span>
 
 <span class="err">!</span><span class="n">gcloud</span> <span class="n">builds</span> <span class="n">submit</span> <span class="o">--</span><span class="n">tag</span> <span class="err">$</span><span class="n">IMAGE_URI</span> <span class="o">../</span><span class="n">app</span><span class="o">/</span><span class="n">src</span><span class="o">/</span><span class="n">Dockerfile</span>
 </pre></div>
-<div class="clipboard-copy-txt" id="cell-38">PROJECT_ID = 'car-eu-dataoffice-sco-nprd'
+<div class="clipboard-copy-txt" id="cell-38">PROJECT_ID = ...
 IMAGE_NAME=f'bert_tf_sentiment'
 IMAGE_TAG='latest'
 IMAGE_URI='eu.gcr.io/{}/{}:{}'.format(PROJECT_ID, IMAGE_NAME, IMAGE_TAG)
