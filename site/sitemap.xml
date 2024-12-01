@@ -2,126 +2,126 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
          <loc>https://benjaminetienne.github.io/blog/</loc>
-         <lastmod>2024-11-30</lastmod>
+         <lastmod>2024-12-01</lastmod>
     </url>
     <url>
          <loc>https://benjaminetienne.github.io/blog/notebooks/GenAI/Agents/</loc>
-         <lastmod>2024-11-30</lastmod>
+         <lastmod>2024-12-01</lastmod>
     </url>
     <url>
          <loc>https://benjaminetienne.github.io/blog/notebooks/Optimization/OR_tools_exercises/</loc>
-         <lastmod>2024-11-30</lastmod>
+         <lastmod>2024-12-01</lastmod>
     </url>
     <url>
          <loc>https://benjaminetienne.github.io/blog/notebooks/Sentiment%20Analysis/BERT%20Sentiment%20Classifier%20with%20PyTorch/</loc>
-         <lastmod>2024-11-30</lastmod>
+         <lastmod>2024-12-01</lastmod>
     </url>
     <url>
          <loc>https://benjaminetienne.github.io/blog/notebooks/Sentiment%20Analysis/BERT%20Sentiment%20Classifier%20with%20Tensorflow/</loc>
-         <lastmod>2024-11-30</lastmod>
+         <lastmod>2024-12-01</lastmod>
     </url>
     <url>
          <loc>https://benjaminetienne.github.io/blog/notebooks/Sentiment%20Analysis/CatBoost%20Sentiment%20Classifier/</loc>
-         <lastmod>2024-11-30</lastmod>
+         <lastmod>2024-12-01</lastmod>
     </url>
     <url>
          <loc>https://benjaminetienne.github.io/blog/notebooks/Sentiment%20Analysis/Simple%20LSTM/</loc>
-         <lastmod>2024-11-30</lastmod>
+         <lastmod>2024-12-01</lastmod>
     </url>
     <url>
          <loc>https://benjaminetienne.github.io/blog/2019/08/21/Bayesian%20Basketball%20%3A%20were%20the%20Toronto%20Raptors%20really%20the%20best%20team%20during%20NBA%202019%20season%20%3F/</loc>
-         <lastmod>2024-11-30</lastmod>
+         <lastmod>2024-12-01</lastmod>
     </url>
     <url>
          <loc>https://benjaminetienne.github.io/blog/2024/05/11/From%20Notebooks%20to%20Pipelines/</loc>
-         <lastmod>2024-11-30</lastmod>
+         <lastmod>2024-12-01</lastmod>
     </url>
     <url>
          <loc>https://benjaminetienne.github.io/blog/2024/11/24/Ground%20your%20chatbot%20with%20function%20calling/</loc>
-         <lastmod>2024-11-30</lastmod>
+         <lastmod>2024-12-01</lastmod>
     </url>
     <url>
          <loc>https://benjaminetienne.github.io/blog/2024/06/03/Using%20GPUs%20on%20Vertex/</loc>
-         <lastmod>2024-11-30</lastmod>
+         <lastmod>2024-12-01</lastmod>
     </url>
     <url>
          <loc>https://benjaminetienne.github.io/blog/2018/11/29/Attention%20Seq2Seq%20with%20PyTorch%3A%20learning%20to%20invert%20a%20sequence/</loc>
-         <lastmod>2024-11-30</lastmod>
+         <lastmod>2024-12-01</lastmod>
     </url>
     <url>
          <loc>https://benjaminetienne.github.io/blog/2019/02/09/Time%20Series%20in%20Python%E2%80%8A%E2%80%94%E2%80%8AExponential%20Smoothing%20and%20ARIMA%20processes/</loc>
-         <lastmod>2024-11-30</lastmod>
+         <lastmod>2024-12-01</lastmod>
     </url>
     <url>
          <loc>https://benjaminetienne.github.io/blog/2019/02/15/Time%20Series%20in%20Python%E2%80%8A%E2%80%94%E2%80%8APart%202%3A%20Dealing%20with%20seasonal%20data/</loc>
-         <lastmod>2024-11-30</lastmod>
+         <lastmod>2024-12-01</lastmod>
     </url>
     <url>
          <loc>https://benjaminetienne.github.io/blog/2019/02/25/Time%20Series%20in%20Python%E2%80%8A%E2%80%94%E2%80%8APart%203%3A%20Forecasting%20taxi%20trips%20with%20LSTMs/</loc>
-         <lastmod>2024-11-30</lastmod>
+         <lastmod>2024-12-01</lastmod>
     </url>
     <url>
          <loc>https://benjaminetienne.github.io/blog/2024/02/24/A%20Complete%20Guide%20to%20Write%20your%20own%20Transformers/</loc>
-         <lastmod>2024-11-30</lastmod>
+         <lastmod>2024-12-01</lastmod>
     </url>
     <url>
          <loc>https://benjaminetienne.github.io/blog/archive/2024/</loc>
-         <lastmod>2024-11-30</lastmod>
+         <lastmod>2024-12-01</lastmod>
     </url>
     <url>
          <loc>https://benjaminetienne.github.io/blog/archive/2019/</loc>
-         <lastmod>2024-11-30</lastmod>
+         <lastmod>2024-12-01</lastmod>
     </url>
     <url>
          <loc>https://benjaminetienne.github.io/blog/archive/2018/</loc>
-         <lastmod>2024-11-30</lastmod>
+         <lastmod>2024-12-01</lastmod>
     </url>
     <url>
          <loc>https://benjaminetienne.github.io/blog/category/agents/</loc>
-         <lastmod>2024-11-30</lastmod>
+         <lastmod>2024-12-01</lastmod>
     </url>
     <url>
          <loc>https://benjaminetienne.github.io/blog/category/langchain/</loc>
-         <lastmod>2024-11-30</lastmod>
+         <lastmod>2024-12-01</lastmod>
     </url>
     <url>
          <loc>https://benjaminetienne.github.io/blog/category/gemini/</loc>
-         <lastmod>2024-11-30</lastmod>
+         <lastmod>2024-12-01</lastmod>
     </url>
     <url>
          <loc>https://benjaminetienne.github.io/blog/category/vertex/</loc>
-         <lastmod>2024-11-30</lastmod>
+         <lastmod>2024-12-01</lastmod>
     </url>
     <url>
          <loc>https://benjaminetienne.github.io/blog/category/gcp/</loc>
-         <lastmod>2024-11-30</lastmod>
+         <lastmod>2024-12-01</lastmod>
     </url>
     <url>
          <loc>https://benjaminetienne.github.io/blog/category/llm/</loc>
-         <lastmod>2024-11-30</lastmod>
+         <lastmod>2024-12-01</lastmod>
     </url>
     <url>
          <loc>https://benjaminetienne.github.io/blog/category/pytorch/</loc>
-         <lastmod>2024-11-30</lastmod>
+         <lastmod>2024-12-01</lastmod>
     </url>
     <url>
          <loc>https://benjaminetienne.github.io/blog/category/classification/</loc>
-         <lastmod>2024-11-30</lastmod>
+         <lastmod>2024-12-01</lastmod>
     </url>
     <url>
          <loc>https://benjaminetienne.github.io/blog/category/catboost/</loc>
-         <lastmod>2024-11-30</lastmod>
+         <lastmod>2024-12-01</lastmod>
     </url>
     <url>
          <loc>https://benjaminetienne.github.io/blog/category/transformers/</loc>
-         <lastmod>2024-11-30</lastmod>
+         <lastmod>2024-12-01</lastmod>
     </url>
     <url>
          <loc>https://benjaminetienne.github.io/blog/category/bayesian/</loc>
-         <lastmod>2024-11-30</lastmod>
+         <lastmod>2024-12-01</lastmod>
     </url>
     <url>
          <loc>https://benjaminetienne.github.io/blog/category/timeseries/</loc>
-         <lastmod>2024-11-30</lastmod>
+         <lastmod>2024-12-01</lastmod>
     </url>
 </urlset>
