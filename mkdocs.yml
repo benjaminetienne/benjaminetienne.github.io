@@ -15,8 +15,8 @@ plugins:
   - search
   - blog:
       blog_dir: .
-      draft: true
-      draft_on_serve: false
+      draft: false
+      draft_on_serve: true
 
 markdown_extensions:
   - pymdownx.highlight:
