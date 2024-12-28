@@ -62,7 +62,7 @@ google.cloud.bigquery: 3.2.0
 ### Getting and preparing the data
 We will then load the data from BigQuery using the Python Client. Be sure to use your own project id:
 
-{% highlight python %}
+```py
 query = """
     SELECT 
       transactions.user_id,
@@ -86,7 +86,7 @@ query = """
 
 client = bigquery.Client()
 df = client.query(query).to_dataframe()
-{% endhighlight %}
+```
 You should see something like that when looking at the dataframe:
 
 <p align="center">
