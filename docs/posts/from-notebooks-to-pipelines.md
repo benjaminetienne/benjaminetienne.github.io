@@ -8,7 +8,6 @@ categories:
   - catboost
 ---
 
-## Advocating for AI
 There is a misunderstanding (not to say fantasy) which keeps coming back in companies whenever it comes to AI and Machine Learning. People often misjudge the complexity and the skills needed to bring Machine Learning projects to production, either because they do not understand the job, or (even worse) because they think they understand it, whereas they don’t.
 
 Published in [Towards Data Science](https://medium.com/towards-data-science/machine-learning-on-gcp-from-dev-to-prod-with-vertex-ai-c9e42c4b366f)

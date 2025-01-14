@@ -5,9 +5,6 @@ categories:
   - timeseries 
 ---
 
-Introduction
-------------
-
 LSTM (Long Short-Term Memory) is a type a type of recurrent neural network (RNN) architecture, and was proposed in 1997 by [Sepp Hochreiter](https://en.wikipedia.org/wiki/Sepp_Hochreiter) and [Jürgen Schmidhuber](https://en.wikipedia.org/wiki/J%C3%BCrgen_Schmidhuber). RNNs are Deep neural networks specially designed to handle sequential data via recurrence mechanisms. 
 
 <!-- more -->
