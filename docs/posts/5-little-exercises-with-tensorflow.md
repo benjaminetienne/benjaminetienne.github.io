@@ -6,7 +6,8 @@ categories:
   - nlp
   - computer vision 
 ---
-
+Practicing with Tensorflow on a series of little exercises dealing with NLP, Computer Vision and Time Series.
+<!-- more -->
 ## Exercise 1 : Linear Regression
 
 OBJECTIVE : Given this data, train a neural network to match the xs to the ys so that a predictor for a new value of X will give a float value very close to the desired answer, i.e. `print(model.predict([10.0]))` would give a satisfactory result.

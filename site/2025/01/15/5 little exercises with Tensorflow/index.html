@@ -8,26 +8,26 @@
       
       
       
-        <link rel="canonical" href="https://benjaminetienne.github.io/blog/">
+        <link rel="canonical" href="https://benjaminetienne.github.io/blog/2025/01/15/5%20little%20exercises%20with%20Tensorflow/">
+      
+      
+        <link rel="prev" href="../../../../2024/11/24/Ground%20your%20chatbot%20with%20function%20calling/">
       
       
       
-        <link rel="next" href="category/agents/">
-      
-      
-      <link rel="icon" href="assets/images/favicon.png">
+      <link rel="icon" href="../../../../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.46">
     
     
       
-        <title>Ben's Personal Blog</title>
+        <title>5 little exercises with tensorflow - Ben's Personal Blog</title>
       
     
     
-      <link rel="stylesheet" href="assets/stylesheets/main.6f8fc17f.min.css">
+      <link rel="stylesheet" href="../../../../assets/stylesheets/main.6f8fc17f.min.css">
       
         
-        <link rel="stylesheet" href="assets/stylesheets/palette.06af60db.min.css">
+        <link rel="stylesheet" href="../../../../assets/stylesheets/palette.06af60db.min.css">
       
       
 
@@ -46,7 +46,7 @@
       
     
     
-    <script>__md_scope=new URL(".",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
@@ -70,7 +70,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#home" class="md-skip">
+        <a href="#exercise-1-linear-regression" class="md-skip">
           Skip to content
         </a>
       
@@ -86,7 +86,7 @@
 
 <header class="md-header md-header--shadow" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="." title="Ben&#39;s Personal Blog" class="md-header__button md-logo" aria-label="Ben's Personal Blog" data-md-component="logo">
+    <a href="../../../.." title="Ben&#39;s Personal Blog" class="md-header__button md-logo" aria-label="Ben's Personal Blog" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -106,7 +106,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Home
+              5 little exercises with tensorflow
             
           </span>
         </div>
@@ -172,7 +172,9 @@
           
             
               
-              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" hidden>
                 <div class="md-sidebar__scrollwrap">
                   <div class="md-sidebar__inner">
                     
@@ -181,7 +183,7 @@
 
 <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="." title="Ben&#39;s Personal Blog" class="md-nav__button md-logo" aria-label="Ben's Personal Blog" data-md-component="logo">
+    <a href="../../../.." title="Ben&#39;s Personal Blog" class="md-nav__button md-logo" aria-label="Ben's Personal Blog" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -200,19 +202,10 @@
   
   
     
-      
-    
   
   
     <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-      <a href="." class="md-nav__link md-nav__link--active">
+      <a href="../../../.." class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -221,7 +214,6 @@
   
 
       </a>
-      
     </li>
   
 
@@ -317,7 +309,7 @@
   
   
     <li class="md-nav__item">
-      <a href="notebooks/GenAI/Agents/" class="md-nav__link">
+      <a href="../../../../notebooks/GenAI/Agents/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -338,7 +330,7 @@
   
   
     <li class="md-nav__item">
-      <a href="notebooks/GenAI/Langgraph_TrainTravel/" class="md-nav__link">
+      <a href="../../../../notebooks/GenAI/Langgraph_TrainTravel/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -406,7 +398,7 @@
   
   
     <li class="md-nav__item">
-      <a href="notebooks/Optimization/OR_tools_exercises/" class="md-nav__link">
+      <a href="../../../../notebooks/Optimization/OR_tools_exercises/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -480,7 +472,7 @@
   
   
     <li class="md-nav__item">
-      <a href="notebooks/Sentiment%20Analysis/BERT%20Sentiment%20Classifier%20with%20PyTorch/" class="md-nav__link">
+      <a href="../../../../notebooks/Sentiment%20Analysis/BERT%20Sentiment%20Classifier%20with%20PyTorch/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -501,7 +493,7 @@
   
   
     <li class="md-nav__item">
-      <a href="notebooks/Sentiment%20Analysis/BERT%20Sentiment%20Classifier%20with%20Tensorflow/" class="md-nav__link">
+      <a href="../../../../notebooks/Sentiment%20Analysis/BERT%20Sentiment%20Classifier%20with%20Tensorflow/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -522,7 +514,7 @@
   
   
     <li class="md-nav__item">
-      <a href="notebooks/Sentiment%20Analysis/CatBoost%20Sentiment%20Classifier/" class="md-nav__link">
+      <a href="../../../../notebooks/Sentiment%20Analysis/CatBoost%20Sentiment%20Classifier/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -543,7 +535,7 @@
   
   
     <li class="md-nav__item">
-      <a href="notebooks/Sentiment%20Analysis/Simple%20LSTM/" class="md-nav__link">
+      <a href="../../../../notebooks/Sentiment%20Analysis/Simple%20LSTM/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -626,7 +618,7 @@
   
   
     <li class="md-nav__item">
-      <a href="archive/2025/" class="md-nav__link">
+      <a href="../../../../archive/2025/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -649,7 +641,7 @@
   
   
     <li class="md-nav__item">
-      <a href="archive/2024/" class="md-nav__link">
+      <a href="../../../../archive/2024/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -672,7 +664,7 @@
   
   
     <li class="md-nav__item">
-      <a href="archive/2019/" class="md-nav__link">
+      <a href="../../../../archive/2019/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -695,7 +687,7 @@
   
   
     <li class="md-nav__item">
-      <a href="archive/2018/" class="md-nav__link">
+      <a href="../../../../archive/2018/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -792,7 +784,7 @@
   
   
     <li class="md-nav__item">
-      <a href="category/agents/" class="md-nav__link">
+      <a href="../../../../category/agents/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -815,7 +807,7 @@
   
   
     <li class="md-nav__item">
-      <a href="category/bayesian/" class="md-nav__link">
+      <a href="../../../../category/bayesian/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -838,7 +830,7 @@
   
   
     <li class="md-nav__item">
-      <a href="category/catboost/" class="md-nav__link">
+      <a href="../../../../category/catboost/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -861,7 +853,7 @@
   
   
     <li class="md-nav__item">
-      <a href="category/classification/" class="md-nav__link">
+      <a href="../../../../category/classification/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -884,7 +876,7 @@
   
   
     <li class="md-nav__item">
-      <a href="category/computer-vision/" class="md-nav__link">
+      <a href="../../../../category/computer-vision/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -907,7 +899,7 @@
   
   
     <li class="md-nav__item">
-      <a href="category/gcp/" class="md-nav__link">
+      <a href="../../../../category/gcp/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -930,7 +922,7 @@
   
   
     <li class="md-nav__item">
-      <a href="category/gemini/" class="md-nav__link">
+      <a href="../../../../category/gemini/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -953,7 +945,7 @@
   
   
     <li class="md-nav__item">
-      <a href="category/langchain/" class="md-nav__link">
+      <a href="../../../../category/langchain/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -976,7 +968,7 @@
   
   
     <li class="md-nav__item">
-      <a href="category/llm/" class="md-nav__link">
+      <a href="../../../../category/llm/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -999,7 +991,7 @@
   
   
     <li class="md-nav__item">
-      <a href="category/nlp/" class="md-nav__link">
+      <a href="../../../../category/nlp/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1022,7 +1014,7 @@
   
   
     <li class="md-nav__item">
-      <a href="category/pytorch/" class="md-nav__link">
+      <a href="../../../../category/pytorch/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1045,7 +1037,7 @@
   
   
     <li class="md-nav__item">
-      <a href="category/tensorflow/" class="md-nav__link">
+      <a href="../../../../category/tensorflow/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1068,7 +1060,7 @@
   
   
     <li class="md-nav__item">
-      <a href="category/timeseries/" class="md-nav__link">
+      <a href="../../../../category/timeseries/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1091,7 +1083,7 @@
   
   
     <li class="md-nav__item">
-      <a href="category/transformers/" class="md-nav__link">
+      <a href="../../../../category/transformers/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1114,7 +1106,7 @@
   
   
     <li class="md-nav__item">
-      <a href="category/vertex/" class="md-nav__link">
+      <a href="../../../../category/vertex/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1143,6 +1135,8 @@
             
             
               
+                
+              
               <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
                 <div class="md-sidebar__scrollwrap">
                   <div class="md-sidebar__inner">
@@ -1152,8 +1146,59 @@
   
   
   
-    
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#exercise-1-linear-regression" class="md-nav__link">
+    <span class="md-ellipsis">
+      Exercise 1 : Linear Regression
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#exercise-2-computer-vision-mnist" class="md-nav__link">
+    <span class="md-ellipsis">
+      Exercise 2 : Computer Vision (MNIST)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#exercise-3-computer-vision-with-cnns" class="md-nav__link">
+    <span class="md-ellipsis">
+      Exercise 3 : Computer Vision with CNNs
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#exercise-4-nlp" class="md-nav__link">
+    <span class="md-ellipsis">
+      Exercise 4 : NLP
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#exercise-5-time-series" class="md-nav__link">
+    <span class="md-ellipsis">
+      Exercise 5 : Time Series
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
   
 </nav>
                   </div>
@@ -1162,42 +1207,81 @@
             
           
           
-  <div class="md-content" data-md-component="content">
-    <div class="md-content__inner">
-      <header class="md-typeset">
-        <h1 id="home">Home</h1>
-      </header>
-      
-        <article class="md-post md-post--excerpt">
-  <header class="md-post__header">
-    
-    <div class="md-post__meta md-meta">
-      <ul class="md-meta__list">
-        <li class="md-meta__item">
-          <time datetime="2025-01-15 00:00:00+00:00">January 15, 2025</time></li>
-        
-          <li class="md-meta__item">
-            in
+  <div class="md-content md-content--post" data-md-component="content">
+    <div class="md-sidebar md-sidebar--post" data-md-component="sidebar" data-md-type="navigation">
+      <div class="md-sidebar__scrollwrap">
+        <div class="md-sidebar__inner md-post">
+          <nav class="md-nav md-nav--primary">
+            <div class="md-post__back">
+              <div class="md-nav__title md-nav__container">
+                <a href="../../../.." class="md-nav__link">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+                  <span class="md-ellipsis">
+                    Back to index
+                  </span>
+                </a>
+              </div>
+            </div>
             
-              <a href="category/tensorflow/" class="md-meta__link">tensorflow</a>, 
-              <a href="category/nlp/" class="md-meta__link">nlp</a>, 
-              <a href="category/computer-vision/" class="md-meta__link">computer vision</a></li>
-        
-        
+            <ul class="md-post__meta md-nav__list">
+              <li class="md-nav__item md-nav__item--section">
+                <div class="md-post__title">
+                  <span class="md-ellipsis">
+                    Metadata
+                  </span>
+                </div>
+                <nav class="md-nav">
+                  <ul class="md-nav__list">
+                    <li class="md-nav__item">
+                      <div class="md-nav__link">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 19H5V8h14m-3-7v2H8V1H6v2H5c-1.11 0-2 .89-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2h-1V1m-1 11h-5v5h5z"/></svg>
+                        <time datetime="2025-01-15 00:00:00+00:00" class="md-ellipsis">January 15, 2025</time>
+                      </div>
+                    </li>
+                    
+                    
+                      <li class="md-nav__item">
+                        <div class="md-nav__link">
+                          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9 3v15h3V3zm3 2 4 13 3-1-4-13zM5 5v13h3V5zM3 19v2h18v-2z"/></svg>
+                          <span class="md-ellipsis">
+                            in
+                            
+                              <a href="../../../../category/tensorflow/">tensorflow</a>, 
+                              <a href="../../../../category/nlp/">nlp</a>, 
+                              <a href="../../../../category/computer-vision/">computer vision</a></span>
+                        </div>
+                      </li>
+                    
+                    
+                      
+                      <li class="md-nav__item">
+                        <div class="md-nav__link">
+                          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 20a8 8 0 0 0 8-8 8 8 0 0 0-8-8 8 8 0 0 0-8 8 8 8 0 0 0 8 8m0-18a10 10 0 0 1 10 10 10 10 0 0 1-10 10C6.47 22 2 17.5 2 12A10 10 0 0 1 12 2m.5 5v5.25l4.5 2.67-.75 1.23L11 13V7z"/></svg>
+                          <span class="md-ellipsis">
+                            
+                              8 min read
+                            
+                          </span>
+                        </div>
+                      </li>
+                    
+                  </ul>
+                </nav>
+              </li>
+            </ul>
+          </nav>
           
-          <li class="md-meta__item">
-            
-              8 min read
-            
-          </li>
-        
-      </ul>
-      
+        </div>
+      </div>
     </div>
-  </header>
-  <div class="md-post__content md-typeset">
-    <h2 id="5-little-exercises-with-tensorflow"><a class="toclink" href="2025/01/15/5%20little%20exercises%20with%20Tensorflow/">5 little exercises with tensorflow</a></h2>
-<h3 id="exercise-1-linear-regression"><a class="toclink" href="2025/01/15/5%20little%20exercises%20with%20Tensorflow/#exercise-1-linear-regression">Exercise 1 : Linear Regression</a></h3>
+    <article class="md-content__inner md-typeset">
+      
+        
+
+
+  <h1>5 little exercises with tensorflow</h1>
+
+<h2 id="exercise-1-linear-regression">Exercise 1 : Linear Regression</h2>
 <p>OBJECTIVE : Given this data, train a neural network to match the xs to the ys so that a predictor for a new value of X will give a float value very close to the desired answer, i.e. <code>print(model.predict([10.0]))</code> would give a satisfactory result.</p>
 <div class="language-py highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 </span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="kn">import</span> <span class="nn">tensorflow</span> <span class="k">as</span> <span class="nn">tf</span>
@@ -1226,7 +1310,7 @@
 </span><span id="__span-0-25"><a id="__codelineno-0-25" name="__codelineno-0-25" href="#__codelineno-0-25"></a>    <span class="p">)</span>
 </span><span id="__span-0-26"><a id="__codelineno-0-26" name="__codelineno-0-26" href="#__codelineno-0-26"></a>    <span class="nb">print</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">10.</span><span class="p">])))</span>
 </span></code></pre></div>
-<h3 id="exercise-2-computer-vision-mnist"><a class="toclink" href="2025/01/15/5%20little%20exercises%20with%20Tensorflow/#exercise-2-computer-vision-mnist">Exercise 2 : Computer Vision (MNIST)</a></h3>
+<h2 id="exercise-2-computer-vision-mnist">Exercise 2 : Computer Vision (MNIST)</h2>
 <p>OBJECTIVE : Create and train a classifier for the MNIST dataset.</p>
 <p>We expect it to classify 10 classes and the 
 input shape should be the native size of the MNIST dataset which is 
@@ -1277,7 +1361,7 @@ input shape should be the native size of the MNIST dataset which is
 </span><span id="__span-1-43"><a id="__codelineno-1-43" name="__codelineno-1-43" href="#__codelineno-1-43"></a>
 </span><span id="__span-1-44"><a id="__codelineno-1-44" name="__codelineno-1-44" href="#__codelineno-1-44"></a>    <span class="n">preds</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">x_test</span><span class="p">)</span>
 </span></code></pre></div>
-<h3 id="exercise-3-computer-vision-with-cnns"><a class="toclink" href="2025/01/15/5%20little%20exercises%20with%20Tensorflow/#exercise-3-computer-vision-with-cnns">Exercise 3 : Computer Vision with CNNs</a></h3>
+<h2 id="exercise-3-computer-vision-with-cnns">Exercise 3 : Computer Vision with CNNs</h2>
 <p>OBJECTIVE : Create and train a classifier to classify images between two classes
 (damage and no_damage) using the satellite-images-of-hurricane-damage dataset.</p>
 <p>The dataset can be found here:
@@ -1378,7 +1462,7 @@ divided into two groups (damage and no_damage).</p>
 </span><span id="__span-2-86"><a id="__codelineno-2-86" name="__codelineno-2-86" href="#__codelineno-2-86"></a>        <span class="n">validation_data</span><span class="o">=</span><span class="n">val_ds</span>
 </span><span id="__span-2-87"><a id="__codelineno-2-87" name="__codelineno-2-87" href="#__codelineno-2-87"></a>    <span class="p">)</span>
 </span></code></pre></div>
-<h3 id="exercise-4-nlp"><a class="toclink" href="2025/01/15/5%20little%20exercises%20with%20Tensorflow/#exercise-4-nlp">Exercise 4 : NLP</a></h3>
+<h2 id="exercise-4-nlp">Exercise 4 : NLP</h2>
 <p>OBJECTIVE : Build and train a classifier for the sarcasm dataset.</p>
 <p>The classifier should have a final layer with 1 neuron activated by sigmoid as shown.</p>
 <p>The objective is to classify whether a sentence is sarcasm or not</p>
@@ -1481,7 +1565,7 @@ divided into two groups (damage and no_damage).</p>
 </span><span id="__span-3-97"><a id="__codelineno-3-97" name="__codelineno-3-97" href="#__codelineno-3-97"></a>        <span class="p">]</span>
 </span><span id="__span-3-98"><a id="__codelineno-3-98" name="__codelineno-3-98" href="#__codelineno-3-98"></a>    <span class="p">)</span>
 </span></code></pre></div>
-<h3 id="exercise-5-time-series"><a class="toclink" href="2025/01/15/5%20little%20exercises%20with%20Tensorflow/#exercise-5-time-series">Exercise 5 : Time Series</a></h3>
+<h2 id="exercise-5-time-series">Exercise 5 : Time Series</h2>
 <p>OBJECTIVE : Build and train a neural network to predict time indexed variables of the multivariate house hold electric power consumption time series dataset. Using a window of past 24 observations of the 7 variables, the model should be trained to predict the next 24 observations of the 7 variables.</p>
 <p>DAtaset can be found here :
 https://archive.ics.uci.edu/ml/datasets/individual+household+electric+power+consumption</p>
@@ -1652,357 +1736,25 @@ a one-minute sampling rate over a period of almost 4 years.</p>
 </span><span id="__span-5-16"><a id="__codelineno-5-16" name="__codelineno-5-16" href="#__codelineno-5-16"></a><span class="n">x_valid</span> <span class="o">=</span> <span class="n">x_valid</span><span class="p">[:</span><span class="n">rnn_forecast</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span>
 </span><span id="__span-5-17"><a id="__codelineno-5-17" name="__codelineno-5-17" href="#__codelineno-5-17"></a><span class="n">result</span> <span class="o">=</span> <span class="n">mae</span><span class="p">(</span><span class="n">x_valid</span><span class="p">,</span> <span class="n">rnn_forecast</span><span class="p">)</span>
 </span></code></pre></div>
-    
-  </div>
-</article>
-      
-        <article class="md-post md-post--excerpt">
-  <header class="md-post__header">
-    
-    <div class="md-post__meta md-meta">
-      <ul class="md-meta__list">
-        <li class="md-meta__item">
-          <time datetime="2024-11-24 00:00:00+00:00">November 24, 2024</time></li>
-        
-          <li class="md-meta__item">
-            in
-            
-              <a href="category/agents/" class="md-meta__link">agents</a>, 
-              <a href="category/langchain/" class="md-meta__link">langchain</a>, 
-              <a href="category/gemini/" class="md-meta__link">gemini</a></li>
-        
-        
-          
-          <li class="md-meta__item">
-            
-              15 min read
-            
-          </li>
-        
-      </ul>
-      
-    </div>
-  </header>
-  <div class="md-post__content md-typeset">
-    <h2 id="build-your-personal-assistant-with-agents-and-tools"><a class="toclink" href="2024/11/24/Ground%20your%20chatbot%20with%20function%20calling/">Build your Personal Assistant with Agents and Tools</a></h2>
-<p>LLMs alone suffer from not being able to access external or real-time data. Learn how to build your personal assistant using LangChain agents and Gemini by grounding it in external sources.</p>
-<p>Published in <a href="https://towardsdatascience.com/?source=post_page---byline--048637ac308e--------------------------------">Towards Data Science</a></p>
-
-    
-      <nav class="md-post__action">
-        <a href="2024/11/24/Ground%20your%20chatbot%20with%20function%20calling/">
-          Continue reading
-        </a>
-      </nav>
-    
-  </div>
-</article>
-      
-        <article class="md-post md-post--excerpt">
-  <header class="md-post__header">
-    
-    <div class="md-post__meta md-meta">
-      <ul class="md-meta__list">
-        <li class="md-meta__item">
-          <time datetime="2024-06-03 00:00:00+00:00">June 3, 2024</time></li>
-        
-          <li class="md-meta__item">
-            in
-            
-              <a href="category/vertex/" class="md-meta__link">vertex</a>, 
-              <a href="category/gcp/" class="md-meta__link">gcp</a>, 
-              <a href="category/llm/" class="md-meta__link">llm</a>, 
-              <a href="category/pytorch/" class="md-meta__link">pytorch</a></li>
-        
-        
-          
-          <li class="md-meta__item">
-            
-              14 min read
-            
-          </li>
-        
-      </ul>
-      
-    </div>
-  </header>
-  <div class="md-post__content md-typeset">
-    <h2 id="gpu-on-vertex"><a class="toclink" href="2024/06/03/Using%20GPUs%20on%20Vertex/">Gpu on vertex</a></h2>
-<p>In this article, we will take a concrete use case where we will fine-tune a BERT model on social media comments to perform sentiment analysis. As we will see, training this kind of model on a CPU is very cumbersome and not optimal. We will therefore see how we can leverage Google Cloud Platform to speed up the process by using a GPU for only 60 cents.</p>
-<p>Published in <a href="https://medium.com/towards-data-science/no-gpu-no-party-fine-tune-bert-for-sentiment-analysis-with-vertex-ai-custom-jobs-d8fc410e908b">Towards Data Science</a></p>
-
-    
-      <nav class="md-post__action">
-        <a href="2024/06/03/Using%20GPUs%20on%20Vertex/">
-          Continue reading
-        </a>
-      </nav>
-    
-  </div>
-</article>
-      
-        <article class="md-post md-post--excerpt">
-  <header class="md-post__header">
-    
-    <div class="md-post__meta md-meta">
-      <ul class="md-meta__list">
-        <li class="md-meta__item">
-          <time datetime="2024-05-11 00:00:00+00:00">May 11, 2024</time></li>
-        
-          <li class="md-meta__item">
-            in
-            
-              <a href="category/vertex/" class="md-meta__link">vertex</a>, 
-              <a href="category/gcp/" class="md-meta__link">gcp</a>, 
-              <a href="category/classification/" class="md-meta__link">classification</a>, 
-              <a href="category/catboost/" class="md-meta__link">catboost</a></li>
-        
-        
-          
-          <li class="md-meta__item">
-            
-              16 min read
-            
-          </li>
-        
-      </ul>
-      
-    </div>
-  </header>
-  <div class="md-post__content md-typeset">
-    <h2 id="from-notebooks-to-pipelines"><a class="toclink" href="2024/05/11/From%20Notebooks%20to%20Pipelines/">From notebooks to pipelines</a></h2>
-<p>There is a misunderstanding (not to say fantasy) which keeps coming back in companies whenever it comes to AI and Machine Learning. People often misjudge the complexity and the skills needed to bring Machine Learning projects to production, either because they do not understand the job, or (even worse) because they think they understand it, whereas they don’t.</p>
-<p>Published in <a href="https://medium.com/towards-data-science/machine-learning-on-gcp-from-dev-to-prod-with-vertex-ai-c9e42c4b366f">Towards Data Science</a></p>
-
-    
-      <nav class="md-post__action">
-        <a href="2024/05/11/From%20Notebooks%20to%20Pipelines/">
-          Continue reading
-        </a>
-      </nav>
-    
-  </div>
-</article>
-      
-        <article class="md-post md-post--excerpt">
-  <header class="md-post__header">
-    
-    <div class="md-post__meta md-meta">
-      <ul class="md-meta__list">
-        <li class="md-meta__item">
-          <time datetime="2024-02-24 00:00:00+00:00">February 24, 2024</time></li>
-        
-          <li class="md-meta__item">
-            in
-            
-              <a href="category/transformers/" class="md-meta__link">transformers</a>, 
-              <a href="category/pytorch/" class="md-meta__link">pytorch</a></li>
-        
-        
-          
-          <li class="md-meta__item">
-            
-              14 min read
-            
-          </li>
-        
-      </ul>
-      
-    </div>
-  </header>
-  <div class="md-post__content md-typeset">
-    <h2 id="transformers-guide"><a class="toclink" href="2024/02/24/A%20Complete%20Guide%20to%20Write%20your%20own%20Transformers/">Transformers guide</a></h2>
-<p>An end-to-end implementation of a Pytorch Transformer, in which we will cover key concepts such as self-attention, encoders, decoders, and much more.</p>
-
-    
-      <nav class="md-post__action">
-        <a href="2024/02/24/A%20Complete%20Guide%20to%20Write%20your%20own%20Transformers/">
-          Continue reading
-        </a>
-      </nav>
-    
-  </div>
-</article>
-      
-        <article class="md-post md-post--excerpt">
-  <header class="md-post__header">
-    
-    <div class="md-post__meta md-meta">
-      <ul class="md-meta__list">
-        <li class="md-meta__item">
-          <time datetime="2019-08-21 00:00:00+00:00">August 21, 2019</time></li>
-        
-          <li class="md-meta__item">
-            in
-            
-              <a href="category/bayesian/" class="md-meta__link">bayesian</a></li>
-        
-        
-          
-          <li class="md-meta__item">
-            
-              1 min read
-            
-          </li>
-        
-      </ul>
-      
-    </div>
-  </header>
-  <div class="md-post__content md-typeset">
-    <h2 id="bayesian-basketball"><a class="toclink" href="2019/08/21/Bayesian%20Basketball%20%3A%20were%20the%20Toronto%20Raptors%20really%20the%20best%20team%20during%20NBA%202019%20season%20%3F/">Bayesian basketball</a></h2>
-<p>Work in progress</p>
-    
-  </div>
-</article>
-      
-        <article class="md-post md-post--excerpt">
-  <header class="md-post__header">
-    
-    <div class="md-post__meta md-meta">
-      <ul class="md-meta__list">
-        <li class="md-meta__item">
-          <time datetime="2019-02-25 00:00:00+00:00">February 25, 2019</time></li>
-        
-          <li class="md-meta__item">
-            in
-            
-              <a href="category/timeseries/" class="md-meta__link">timeseries</a></li>
-        
-        
-          
-          <li class="md-meta__item">
-            
-              11 min read
-            
-          </li>
-        
-      </ul>
-      
-    </div>
-  </header>
-  <div class="md-post__content md-typeset">
-    <h2 id="time-series-part3"><a class="toclink" href="2019/02/25/Time%20Series%20in%20Python%E2%80%8A%E2%80%94%E2%80%8APart%203%3A%20Forecasting%20taxi%20trips%20with%20LSTMs/">Time series part3</a></h2>
-<p>LSTM (Long Short-Term Memory) is a type a type of recurrent neural network (RNN) architecture, and was proposed in 1997 by <a href="https://en.wikipedia.org/wiki/Sepp_Hochreiter">Sepp Hochreiter</a> and <a href="https://en.wikipedia.org/wiki/J%C3%BCrgen_Schmidhuber">Jürgen Schmidhuber</a>. RNNs are Deep neural networks specially designed to handle sequential data via recurrence mechanisms. </p>
-
-    
-      <nav class="md-post__action">
-        <a href="2019/02/25/Time%20Series%20in%20Python%E2%80%8A%E2%80%94%E2%80%8APart%203%3A%20Forecasting%20taxi%20trips%20with%20LSTMs/">
-          Continue reading
-        </a>
-      </nav>
-    
-  </div>
-</article>
-      
-        <article class="md-post md-post--excerpt">
-  <header class="md-post__header">
-    
-    <div class="md-post__meta md-meta">
-      <ul class="md-meta__list">
-        <li class="md-meta__item">
-          <time datetime="2019-02-15 00:00:00+00:00">February 15, 2019</time></li>
-        
-          <li class="md-meta__item">
-            in
-            
-              <a href="category/timeseries/" class="md-meta__link">timeseries</a></li>
-        
-        
-          
-          <li class="md-meta__item">
-            
-              1 min read
-            
-          </li>
-        
-      </ul>
-      
-    </div>
-  </header>
-  <div class="md-post__content md-typeset">
-    <h2 id="time-series-part2"><a class="toclink" href="2019/02/15/Time%20Series%20in%20Python%E2%80%8A%E2%80%94%E2%80%8APart%202%3A%20Dealing%20with%20seasonal%20data/">Time series part2</a></h2>
-<p>Work in progress</p>
-    
-  </div>
-</article>
-      
-        <article class="md-post md-post--excerpt">
-  <header class="md-post__header">
-    
-    <div class="md-post__meta md-meta">
-      <ul class="md-meta__list">
-        <li class="md-meta__item">
-          <time datetime="2019-02-09 00:00:00+00:00">February 9, 2019</time></li>
-        
-          <li class="md-meta__item">
-            in
-            
-              <a href="category/timeseries/" class="md-meta__link">timeseries</a></li>
-        
-        
-          
-          <li class="md-meta__item">
-            
-              1 min read
-            
-          </li>
-        
-      </ul>
-      
-    </div>
-  </header>
-  <div class="md-post__content md-typeset">
-    <h2 id="time-series-part1"><a class="toclink" href="2019/02/09/Time%20Series%20in%20Python%E2%80%8A%E2%80%94%E2%80%8AExponential%20Smoothing%20and%20ARIMA%20processes/">Time series part1</a></h2>
-<p>Work in progress</p>
-    
-  </div>
-</article>
-      
-        <article class="md-post md-post--excerpt">
-  <header class="md-post__header">
-    
-    <div class="md-post__meta md-meta">
-      <ul class="md-meta__list">
-        <li class="md-meta__item">
-          <time datetime="2018-11-29 00:00:00+00:00">November 29, 2018</time></li>
-        
-          <li class="md-meta__item">
-            in
-            
-              <a href="category/pytorch/" class="md-meta__link">pytorch</a></li>
-        
-        
-          
-          <li class="md-meta__item">
-            
-              1 min read
-            
-          </li>
-        
-      </ul>
-      
-    </div>
-  </header>
-  <div class="md-post__content md-typeset">
-    <h2 id="seq2seq-with-pytorch"><a class="toclink" href="2018/11/29/Attention%20Seq2Seq%20with%20PyTorch%3A%20learning%20to%20invert%20a%20sequence/">Seq2seq with pytorch</a></h2>
-<p>Work in progress</p>
-    
-  </div>
-</article>
-      
-      
-        
-          
 
 
 
-<nav class="md-pagination">
+
+
+
+
   
-</nav>
-        
+  
+
+
+
+
+  
+
+
+
       
-    </div>
+    </article>
   </div>
 
           
@@ -2035,10 +1787,10 @@ a one-minute sampling rate over a period of almost 4 years.</p>
     </div>
     
     
-    <script id="__config" type="application/json">{"base": ".", "features": ["navigation.indexes"], "search": "assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    <script id="__config" type="application/json">{"base": "../../../..", "features": ["navigation.indexes"], "search": "../../../../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
     
     
-      <script src="assets/javascripts/bundle.83f73b43.min.js"></script>
+      <script src="../../../../assets/javascripts/bundle.83f73b43.min.js"></script>
       
     
   </body>
