@@ -1537,11 +1537,13 @@ I don't think that everyone's using the SPA pattern for no reason. For large cor
 <p>Except for highly interactive/collaborative UIs, simple HTML with Multi-Page Applications is often enough. So how do we go back to good old HTML ?</p>
 <h2 id="htmx-is-all-you-need">HTMX is All You Need</h2>
 <p>HTMX is a very lightweight JS library (14k) that offers a HTML-centric approach to building dynamic web applications. It extends HTML by allowing any element to make AJAX requests and update any part of the DOM. Unlike JS frameworks which do all the rendering on the client side, the heavy lifting is done by the server by returning HTML fragments to be inserted in the DOM. This also means that if you already know templating engines and HTML, the learning curve will be much much much easier compared to learning React or Angular.</p>
-<p>Instead of abandoning hypermedia for JSON APIs, HTMX makes HTML more capable with the following:
-- Any element can make HTTP requests (not just <code>&lt;a&gt;</code> and <code>&lt;form&gt;</code>)
-- Any HTTP method (GET, POST, PUT, DELETE, PATCH)
-- Any element can be targeted for updates
-- Any event can trigger requests (click, submit, load, etc.)</p>
+<p>Instead of abandoning hypermedia for JSON APIs, HTMX makes HTML more capable with the following:</p>
+<ul>
+<li>Any element can make HTTP requests (not just <code>&lt;a&gt;</code> and <code>&lt;form&gt;</code>)</li>
+<li>Any HTTP method (GET, POST, PUT, DELETE, PATCH)</li>
+<li>Any element can be targeted for updates</li>
+<li>Any event can trigger requests (click, submit, load, etc.)</li>
+</ul>
 <p>In fact, you can actually write your own little GPT-like UI with HTMX and just a few lines of Python!</p>
 <h2 id="a-simple-htmx-demo">A Simple HTMX demo</h2>
 <p>For this article, we will build a little chat with less than 100 lines of Python and HTML. But before that, we will start with a simple demo to show how HTMX works.
@@ -1630,28 +1632,36 @@ Let's assume we have an API that returns a list of users. We want to click a but
 </span><span id="__span-5-17"><a id="__codelineno-5-17" name="__codelineno-5-17" href="#__codelineno-5-17"></a>  <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
 </span><span id="__span-5-18"><a id="__codelineno-5-18" name="__codelineno-5-18" href="#__codelineno-5-18"></a><span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
 </span></code></pre></div>
-<p>You get exactly the same result! What happened just here? Look at the <code>&lt;button&gt;</code> element. We see 3 attributes starting with <code>hx-</code>. What are they here for?
-- <code>hx-get</code>: Clicking on this button will trigger a GET request to the /users endpoint
-- <code>hx-target</code>: It tells the browser to replace the content of the element which has the usersList id with the HTML data received from the server
-- <code>hx-swap</code>: It tells the browser to insert the HTML inside the target element</p>
+<p>You get exactly the same result! What happened just here? Look at the <code>&lt;button&gt;</code> element. We see 3 attributes starting with <code>hx-</code>. What are they here for?</p>
+<ul>
+<li><code>hx-get</code>: Clicking on this button will trigger a GET request to the /users endpoint</li>
+<li><code>hx-target</code>: It tells the browser to replace the content of the element which has the usersList id with the HTML data received from the server</li>
+<li><code>hx-swap</code>: It tells the browser to insert the HTML inside the target element</li>
+</ul>
 <p>With that, you already know how to use HTMX. The beautiful thing about this way of doing is that if you decide changing your HTML, it won't break anything on your page. </p>
 <p>There are, of courses, advantages and drawbacks in using HTMX. But as a Python developer, among a team of Python developers, it feels very nice being able to play around with my FastAPI backend and not worry a lot about frontend development. Just add Jinja templates, a dose of Tailwind CSS, and we're good to go!</p>
 <h2 id="our-first-chat-with-htmx-and-fastapi">Our first chat with HTMX and FastAPI</h2>
-<p>So now is the moment when things are getting serious. To build our chatbot, we will proceed step by step:
-- Start with a a dumb chatbot that will take the users query, and spit it backwards . This will illustrate how HTMX sends and receives data
-- Add a streaming capability to our chatbot that will spit out the user's query word by word, to illustrate Server-Sent Events (SSE) and async communication
-- Plug a real LLM with a Google Search tool to get real answers and illustrate the concepts of agentic chatbots</p>
-<p>Let's begin with our dumb chatbot. For that we will design a simple UI that will take:
-- a list of messages
-- a textarea for the user's input</p>
+<p>So now is the moment when things are getting serious. To build our chatbot, we will proceed step by step:</p>
+<ul>
+<li>Start with a a dumb chatbot that will take the users query, and spit it backwards . This will illustrate how HTMX sends and receives data</li>
+<li>Add a streaming capability to our chatbot that will spit out the user's query word by word, to illustrate Server-Sent Events (SSE) and async communication</li>
+<li>Plug a real LLM with a Google Search tool to get real answers and illustrate the concepts of agentic chatbots</li>
+</ul>
+<p>Let's begin with our dumb chatbot. For that we will design a simple UI that will take:</p>
+<ul>
+<li>a list of messages</li>
+<li>a textarea for the user's input</li>
+</ul>
 <p>And guess what, HTMX will take care of sending/receiving the messages! This is what the result will look like:</p>
 <p>Image from author</p>
-<p>The flow is the following:
-- User inputs a query in a textarea
-- This textarea is wrapped in a form, which will send a POST request to the server with the query parameter.
-- The backend receives the request, does something with the query (in real life, we can use a LLM to answer the query). In our case, for demo purposes, we will just reply by reverting the query letter by letter.
-- The backend wraps the response in an HTMLResponse (not JSON!)
-- In our form, HTMX tells the browser where to insert the response, as shown in the hx-target, and how to swap it with the current DOM</p>
+<p>The flow is the following:</p>
+<ul>
+<li>User inputs a query in a textarea</li>
+<li>This textarea is wrapped in a form, which will send a POST request to the server with the query parameter.</li>
+<li>The backend receives the request, does something with the query (in real life, we can use a LLM to answer the query). In our case, for demo purposes, we will just reply by reverting the query letter by letter.</li>
+<li>The backend wraps the response in an HTMLResponse (not JSON!)</li>
+<li>In our form, HTMX tells the browser where to insert the response, as shown in the <code>hx-target</code>, and how to swap it with the current DOM</li>
+</ul>
 <p>And this is all. So let's begin!</p>
 <h3 id="backend">Backend</h3>
 <p>We will define a <code>/send</code> route that expect a query string from the frontend, inverts it, and sends it back in a <code>&lt;li&gt;</code> tag.</p>
@@ -1734,12 +1744,14 @@ Let's assume we have an API that returns a list of users. We want to click a but
 <p>The <code>hx-on::before-request</code> is a little bit more complex, but can be explained easily. It basically happens between the click and the moment the request is sent. It will add the user input the bottom of the list, and clear the user input. This way, we get a snappy user experience!</p>
 <h2 id="a-better-chat-streaming-llm">A Better chat (streaming + LLM)</h2>
 <p>What we built is a very simple yet functional chat, however if we want to plug a LLM, we might find some moments when the response from the server takes a long time to be returned. The way our current chat is built is synchronous, meaning nothing will show until the LLM is finished writing. Not a great user experience.</p>
-<p>What we need now is streaming, and a real LLM to have a conversation with. Here are the next steps :
-- Real-time streaming with SSE
-- Session-based architecture for multiple users
-- Async coordination with asyncio.Queue
-- Clean HTMX patterns with dedicated SSE handling
-- A Google Search Agent to answer queries with fresh data</p>
+<p>What we need now is streaming, and a real LLM to have a conversation with. Here are the next steps :</p>
+<ul>
+<li>Real-time streaming with SSE</li>
+<li>Session-based architecture for multiple users</li>
+<li>Async coordination with asyncio.Queue</li>
+<li>Clean HTMX patterns with dedicated SSE handling</li>
+<li>A Google Search Agent to answer queries with fresh data</li>
+</ul>
 <p>Here is what the final result will look like:</p>
 <p>Image by author</p>
 <h3 id="from-sync-communication-to-async">From sync communication to async</h3>
@@ -1751,24 +1763,30 @@ Let's assume we have an API that returns a list of users. We want to click a but
 <p><em>SSE</em> are unidirectional and only allow for a one-way conversation, from server to client. This means that the client cannot send anything to the server via this protocol. If websockets is a two-way phone conversation where people can speak and listen at the same time, SSE is like listening to the radio. SSE are typically used to send notification, update charts in finance applications, or newsfeeds.</p>
 <p>So why do we choose SSE? Well because in our use case we don't need full duplex, and that simple HTTP (which is not how Websockets work) is enough for our use case: we send data, we receive data. SSE just means that we will receive data in a stream, nothing more is needed.</p>
 <h3 id="overview">Overview</h3>
-<p>Here is the flow we will build:
-- User inputs a query
-- Server receives the query and sends it to the LLM
-- LLM starts producing content
-- For each piece of content, the server returns it immediately
-- Browser adds this piece of information to the DOM</p>
+<p>Here is the flow we will build:</p>
+<ul>
+<li>User inputs a query</li>
+<li>Server receives the query and sends it to the LLM</li>
+<li>LLM starts producing content</li>
+<li>For each piece of content, the server returns it immediately</li>
+<li>Browser adds this piece of information to the DOM</li>
+</ul>
 <h3 id="backend_1">Backend</h3>
-<p>The backend will proceed in 2 steps:
-- A POST endpoint that will receive the message, and return nothing
-- A GET endpoint that will read a queue and produce an output stream.</p>
+<p>The backend will proceed in 2 steps:</p>
+<ul>
+<li>A POST endpoint that will receive the message, and return nothing</li>
+<li>A GET endpoint that will read a queue and produce an output stream.</li>
+</ul>
 <p>In our demo, to begin with, we will create a fake LLM response by repeating the user input, meaning that the words of the stream will be exactly the same as the user input.</p>
 <p>To keep things clean, we need to separate the message streams (the queues) by user session, otherwise we would end up mixing up conversations. We will therefore create a session dictionary to host our queues.</p>
 <p>Next, we need to tell the backend to wait before the queue is filled before streaming our response. If we don't, we will encounter concurrency run or timing issues: SSE starts on client side, queue is empty, SSE closes, user inputs a message but…it's too late!</p>
-<p>The solution: <strong>async queues</strong>! Using asynchronous queues has several advantages:
-- If queue has data: Returns immediately
-- If queue is empty: Suspends execution until queue.put() is called
-- Multiple consumers: Each gets their own data
-- Thread-safe: No race conditions</p>
+<p>The solution: <strong>async queues</strong>! Using asynchronous queues has several advantages:</p>
+<ul>
+<li>If queue has data: Returns immediately</li>
+<li>If queue is empty: Suspends execution until queue.put() is called</li>
+<li>Multiple consumers: Each gets their own data</li>
+<li>Thread-safe: No race conditions</li>
+</ul>
 <p>Here is the code below:</p>
 <div class="language-python highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="kn">from</span> <span class="nn">fastapi</span> <span class="kn">import</span> <span class="n">FastAPI</span><span class="p">,</span> <span class="n">Request</span><span class="p">,</span> <span class="n">Form</span>
 </span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="kn">from</span> <span class="nn">fastapi.templating</span> <span class="kn">import</span> <span class="n">Jinja2Templates</span>
@@ -1845,26 +1863,34 @@ Let's assume we have an API that returns a list of users. We want to click a but
 </span><span id="__span-9-8"><a id="__codelineno-9-8" name="__codelineno-9-8" href="#__codelineno-9-8"></a>    <span class="k">return</span> <span class="n">templates</span><span class="o">.</span><span class="n">TemplateResponse</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s2">&quot;index.html&quot;</span><span class="p">,</span> <span class="n">context</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;session_id&quot;</span><span class="p">:</span> <span class="n">session_id</span><span class="p">})</span>
 </span></code></pre></div>
 <h3 id="blocking-coordination">Blocking coordination</h3>
-<p>We need to control the order in which SSE are sent and the user query is received. The order is, on the backend side:
-- Receive user message
-- Create a message queue and populate it
-- Send messages from the queue in a Streaming Response</p>
+<p>We need to control the order in which SSE are sent and the user query is received. The order is, on the backend side:</p>
+<ul>
+<li>Receive user message</li>
+<li>Create a message queue and populate it</li>
+<li>Send messages from the queue in a Streaming Response</li>
+</ul>
 <p>Failure to do so may lead to unwanted behavior, ie. first reading the (empty) message queue, then populating it with the user's query.</p>
-<p>The solution to control the order is to use asyncio.Queue. This object will be used twice:
-- When we insert new messages in the queue. Inserting messages will "wake up" the polling in the SSE endpoint
+<p>The solution to control the order is to use asyncio.Queue. This object will be used twice:</p>
+<ul>
+<li>When we insert new messages in the queue. Inserting messages will "wake up" the polling in the SSE endpoint
 <div class="language-python highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="k">await</span> <span class="n">sessions</span><span class="p">[</span><span class="n">session_id</span><span class="p">]</span><span class="o">.</span><span class="n">put</span><span class="p">(</span><span class="n">query</span><span class="p">)</span>
-</span></code></pre></div>
-- When we pull messages from the queue. In this line, the code is blocked until a signal from the queue arrives saying "hey, i have new data!":
+</span></code></pre></div></li>
+<li>When we pull messages from the queue. In this line, the code is blocked until a signal from the queue arrives saying "hey, i have new data!":
 <div class="language-python highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="n">data</span> <span class="o">=</span> <span class="k">await</span> <span class="n">queue</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
-</span></code></pre></div></p>
-<p>This pattern offers several advantages:
-- Each user has its own queue
-- There is no risk of race conditions</p>
+</span></code></pre></div></li>
+</ul>
+<p>This pattern offers several advantages:</p>
+<ul>
+<li>Each user has its own queue</li>
+<li>There is no risk of race conditions</li>
+</ul>
 <h3 id="streaming-simulation">Streaming simulation</h3>
 <p>Before plugging a real LLM, we will simulate a LLM response by splitting the user's query in words and return those words one by one.</p>
 <p>The streaming is handled via the <code>StreamingResponse</code> object from FastAPI. This object expects an asynchronous generator that will yield data until the generator is over. We have to use the yield keyword instead of the return keyword, otherwise our generator would just stop after the first iteration.</p>
-<p>Let's decompose our streaming function:
-- First, we need to ensure we have a queue for the current session from which we will pull messages:</p>
+<p>Let's decompose our streaming function:</p>
+<ul>
+<li>First, we need to ensure we have a queue for the current session from which we will pull messages:</li>
+</ul>
 <p><div class="language-python highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="k">if</span> <span class="n">session_id</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">sessions</span><span class="p">:</span>
 </span><span id="__span-12-2"><a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a>    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Session </span><span class="si">{</span><span class="n">session_id</span><span class="si">}</span><span class="s2"> not found!&quot;</span><span class="p">)</span>
 </span><span id="__span-12-3"><a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a>    <span class="k">return</span>
@@ -1903,10 +1929,12 @@ Let's assume we have an API that returns a list of users. We want to click a but
 </span><span id="__span-15-19"><a id="__codelineno-15-19" name="__codelineno-15-19" href="#__codelineno-15-19"></a><span class="n">queue</span><span class="o">.</span><span class="n">task_done</span><span class="p">()</span>
 </span></code></pre></div>
 <h3 id="frontend_1">Frontend</h3>
-<p>Our frontend has 2 jobs: send user queries to the backend, and listen for SSE message on a specific channel (the session_id). To do that, we apply a concept called "Separation of concepts", meaning each HTMX element is responsible for a single job only:
-- the form sends a user input
-- the sse listener handles the streaming
-- the ul chat displays the message</p>
+<p>Our frontend has 2 jobs: send user queries to the backend, and listen for SSE message on a specific channel (the session_id). To do that, we apply a concept called "Separation of concepts", meaning each HTMX element is responsible for a single job only:</p>
+<ul>
+<li>the form sends a user input</li>
+<li>the sse listener handles the streaming</li>
+<li>the ul chat displays the message</li>
+</ul>
 <p>To send messages, we will use a standard textarea input in a form. The HTMX magic is just below:</p>
 <div class="language-html highlight"><pre><span></span><code><span id="__span-16-1"><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="p">&lt;</span><span class="nt">form</span> 
 </span><span id="__span-16-2"><a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a>    <span class="na">id</span><span class="o">=</span><span class="s">&quot;userInput&quot;</span> 
@@ -1933,11 +1961,13 @@ Let's assume we have an API that returns a list of users. We want to click a but
 </span><span id="__span-16-23"><a id="__codelineno-16-23" name="__codelineno-16-23" href="#__codelineno-16-23"></a>    <span class="p">&gt;</span>Sends<span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
 </span><span id="__span-16-24"><a id="__codelineno-16-24" name="__codelineno-16-24" href="#__codelineno-16-24"></a><span class="p">&lt;/</span><span class="nt">form</span><span class="p">&gt;</span>
 </span></code></pre></div>
-<p>If you remember the sections above, we have several HTMX attributes which deserve explanations:
- - <code>hx-post</code>: The endpoint the form data will be submitted.
-- <code>hx-swap</code>: Set to none, because in our case the endpoint does not return any data.
-- <code>hx-trigger</code>: Specifies which event will trigger the request
-- <code>hx-on::before-request</code>: A very light part with javascript to add some snappiness to the app. We will append the user's request to the list in the chat, and display a "Thinking" message to the user while we are waiting for the SSE messages to stream. This is nicer that having to stare at a blank page.</p>
+<p>If you remember the sections above, we have several HTMX attributes which deserve explanations:</p>
+<ul>
+<li><code>hx-post</code>: The endpoint the form data will be submitted.</li>
+<li><code>hx-swap</code>: Set to none, because in our case the endpoint does not return any data.</li>
+<li><code>hx-trigger</code>: Specifies which event will trigger the request</li>
+<li><code>hx-on::before-request</code>: A very light part with javascript to add some snappiness to the app. We will append the user's request to the list in the chat, and display a "Thinking" message to the user while we are waiting for the SSE messages to stream. This is nicer that having to stare at a blank page.</li>
+</ul>
 <p>It is worth nothing that we actually send 2 parameters to the backend: the user's input and the session id. This way, the message will be inserted in the right queue on the backend side.</p>
 <p>Then, we define another component that is specifically dedicated to listening to SSE messages.</p>
 <div class="language-html highlight"><pre><span></span><code><span id="__span-17-1"><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a><span class="cm">&lt;!-- Messages will be added to this list--&gt;</span>
@@ -1962,15 +1992,19 @@ Let's assume we have an API that returns a list of users. We want to click a but
 <p>Now is the time to replace our dummy streaming endpoint with a real LLM. To achieve that, we will build an agent using Google ADK, equipped with tools and memory to fetch information and remember conversation details.</p>
 <h3 id="a-very-short-introduction-to-agents">A very short introduction to agents</h3>
 <p>You probably already know what a LLM is, at least I assume you do. The main drawback of LLMs as of today is that LLMs alone cannot access real time information: their knowledge is frozen at the moment they were trained. The other drawback is their inability to access information that is outside their training scope (eg, your company's internal data),</p>
-<p>Agents are a type of AI applications that can reason, act and observe. The reasoning part is handled by the LLM, the "brain". The "hands" of the agents are what we call "tools", and can take several forms:
-- a Python function, for example to fetch an API
-- a MCP server, which is a standard that allows agents to connect to APIs through a standardized interface (eg accessing all the Gsuite tools without having to write yourself the API connectors)
-- other agents (in that case, this pattern is called agent delegation were a router or master agents controls different sub-agents)</p>
+<p>Agents are a type of AI applications that can reason, act and observe. The reasoning part is handled by the LLM, the "brain". The "hands" of the agents are what we call "tools", and can take several forms:</p>
+<ul>
+<li>a Python function, for example to fetch an API</li>
+<li>a MCP server, which is a standard that allows agents to connect to APIs through a standardized interface (eg accessing all the Gsuite tools without having to write yourself the API connectors)</li>
+<li>other agents (in that case, this pattern is called agent delegation were a router or master agents controls different sub-agents)</li>
+</ul>
 <p>In our demo, to make things very simple, we will use a very simple agent that can use one tool: Google Search. This will allow us to get fresh information and ensure it is reliable (at least we hope that the Google Search results are…).</p>
-<p>In the Google ADK world, agents need basic information:
-- <strong>name and description</strong>, for documentation purposes mostly
-- <strong>instructions</strong>: the prompt that defines the behavior of the agent (tools use, output format, steps to follow, etc)
-- <strong>tools</strong>: the functions / MCP servers / agents the agent can use to fulfill its objective</p>
+<p>In the Google ADK world, agents need basic information:</p>
+<ul>
+<li><strong>name and description</strong>, for documentation purposes mostly</li>
+<li><strong>instructions</strong>: the prompt that defines the behavior of the agent (tools use, output format, steps to follow, etc)</li>
+<li><strong>tools</strong>: the functions / MCP servers / agents the agent can use to fulfill its objective</li>
+</ul>
 <p>There are also other concepts around memory and session management, but that are out of scope.
 Without further ado, let's define our agent!</p>
 <h2 id="a-streaming-google-search-agent">A Streaming Google Search Agent</h2>
@@ -2022,9 +2056,11 @@ Without further ado, let's define our agent!</p>
 </span><span id="__span-18-46"><a id="__codelineno-18-46" name="__codelineno-18-46" href="#__codelineno-18-46"></a>    <span class="n">user_id</span><span class="o">=</span><span class="n">USER_ID</span><span class="p">,</span> <span class="n">session_id</span><span class="o">=</span><span class="n">session</span><span class="o">.</span><span class="n">id</span><span class="p">,</span> <span class="n">new_message</span><span class="o">=</span><span class="n">query</span><span class="p">,</span> <span class="n">run_config</span><span class="o">=</span><span class="n">RunConfig</span><span class="p">(</span><span class="n">streaming_mode</span><span class="o">=</span><span class="n">StreamingMode</span><span class="o">.</span><span class="n">SSE</span><span class="p">)</span>
 </span><span id="__span-18-47"><a id="__codelineno-18-47" name="__codelineno-18-47" href="#__codelineno-18-47"></a><span class="p">):</span>
 </span></code></pre></div>
-<p>There is a subtlety next. When generating a response, the agent might output a double linebreak "\n\n". This is problematic because in the SSE protocol, two consecutive newlines <code>\n\n</code> signal the end of an event. Having a double linebreak in your string therefore means:
-- your current message will be truncated
-- your next message will be incorrectly formatted and the SSE stream will stop</p>
+<p>There is a subtlety next. When generating a response, the agent might output a double linebreak "\n\n". This is problematic because in the SSE protocol, two consecutive newlines <code>\n\n</code> signal the end of an event. Having a double linebreak in your string therefore means:</p>
+<ul>
+<li>your current message will be truncated</li>
+<li>your next message will be incorrectly formatted and the SSE stream will stop</li>
+</ul>
 <p>You can try it by yourself. To fix this, we will use a little hack, along with another little hack to format list elements (I use Tailwind CSS which overrides certain CSS rules). The hack is:</p>
 <div class="language-python highlight"><pre><span></span><code><span id="__span-19-1"><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a><span class="k">if</span> <span class="n">event</span><span class="o">.</span><span class="n">partial</span><span class="p">:</span>
 </span><span id="__span-19-2"><a id="__codelineno-19-2" name="__codelineno-19-2" href="#__codelineno-19-2"></a>    <span class="n">message</span> <span class="o">+=</span> <span class="n">event</span><span class="o">.</span><span class="n">content</span><span class="o">.</span><span class="n">parts</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">text</span>
@@ -2101,11 +2137,13 @@ I add below a little CSS snippet to format code blocks. Indeed, if you ask your 
 <p>You can now also generate code snippets:</p>
 <h2 id="conclusion">Conclusion</h2>
 <p>With less that 200 LoC, we were able to write a chat with the following worflow, stream a response from the server and display it very nicely by playing with SSE and HTMX. </p>
-<p>Above all, we showed how easy it could be to develop a chatbot app with very little vanilla javascript and mostly, without heavy JS frameworks, just by using Python and HTML. We covered topics such as :
-- Server-Side Rendering
-- Server-sent Events (SSE)
-- Asynchronous streaming
-- Agents</p>
+<p>Above all, we showed how easy it could be to develop a chatbot app with very little vanilla javascript and mostly, without heavy JS frameworks, just by using Python and HTML. We covered topics such as :</p>
+<ul>
+<li>Server-Side Rendering</li>
+<li>Server-sent Events (SSE)</li>
+<li>Asynchronous streaming</li>
+<li>Agents</li>
+</ul>
 <p>with the help of a magical library, HTMX. </p>
 <p>The main purpose of this article was also to show that the world of web applications is not inaccessible to non-Javascript developers ! There is actually a very strong and valid reason not to use Javascript frameworks everytime for web development, and although Javascript is a powerful language, my feeling today is that it is sometimes overused in place of simpler, yet robust approaches. The server-side vs client-side applications debate is long-standing and not over yet, but I hope this reading may act as an eye-opener to some of you and open new perspectives.</p>
 <p>Find out more on https://htmx.org/</p>
