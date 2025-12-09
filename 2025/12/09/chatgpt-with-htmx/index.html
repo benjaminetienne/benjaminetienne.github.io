@@ -1527,11 +1527,13 @@ I don't think that everyone's using the SPA pattern for no reason. For large cor
 (Tom MacWright, https://macwright.com/2020/05/10/spa-fatigue)
 </quote></p>
 <h2 id="javascript-fatigue-is-real">Javascript Fatigue is real</h2>
-<p>As the dominance of SPAs grew, so did the number of Javascript frameworks and the complexity associated to it. For developers, this profusion of choices, opinionated frameworks and libraries eventually led to a collective sense of exhaustion called "Javascript Fatigue". Here are some reasons to this Javascript frameworks burn-out:
-- Increasing complexity: Libraries and frameworks have become increasingly heavy and complex, requiring big teams to manage. Some opinionated frameworks also mean that JS developers have to specialize on one tech. No Python developer ever called themself "A Tensorflow Python developer". They're just Python developers, and switching from TF to Pytorch is not a problem.
-- Tight coupling: The coupling between data APIs and the UI creates friction within teams. Breaking changes occur everyday, and there is no way to solve this as long as teams use JSON as their exchange interface.
-- Framework proliferation: The number of frameworks keeps increasing, leading to a real feeling of "fatigue" among JS developers.
-- Over-engineering: You don't need JS-heavy frameworks 90% of the time. And in some cases (content-heavy apps), it is even a bad idea (cf Tom MacWright's blog post)</p>
+<p>As the dominance of SPAs grew, so did the number of Javascript frameworks and the complexity associated to it. For developers, this profusion of choices, opinionated frameworks and libraries eventually led to a collective sense of exhaustion called "Javascript Fatigue". Here are some reasons to this Javascript frameworks burn-out:</p>
+<ul>
+<li>Increasing complexity: Libraries and frameworks have become increasingly heavy and complex, requiring big teams to manage. Some opinionated frameworks also mean that JS developers have to specialize on one tech. No Python developer ever called themself "A Tensorflow Python developer". They're just Python developers, and switching from TF to Pytorch is not a problem.</li>
+<li>Tight coupling: The coupling between data APIs and the UI creates friction within teams. Breaking changes occur everyday, and there is no way to solve this as long as teams use JSON as their exchange interface.</li>
+<li>Framework proliferation: The number of frameworks keeps increasing, leading to a real feeling of "fatigue" among JS developers.</li>
+<li>Over-engineering: You don't need JS-heavy frameworks 90% of the time. And in some cases (content-heavy apps), it is even a bad idea (cf Tom MacWright's blog post)</li>
+</ul>
 <p>Except for highly interactive/collaborative UIs, simple HTML with Multi-Page Applications is often enough. So how do we go back to good old HTML ?</p>
 <h2 id="htmx-is-all-you-need">HTMX is All You Need</h2>
 <p>HTMX is a very lightweight JS library (14k) that offers a HTML-centric approach to building dynamic web applications. It extends HTML by allowing any element to make AJAX requests and update any part of the DOM. Unlike JS frameworks which do all the rendering on the client side, the heavy lifting is done by the server by returning HTML fragments to be inserted in the DOM. This also means that if you already know templating engines and HTML, the learning curve will be much much much easier compared to learning React or Angular.</p>
