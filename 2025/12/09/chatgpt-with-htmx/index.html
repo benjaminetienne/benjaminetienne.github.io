@@ -1447,7 +1447,7 @@
                           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 20a8 8 0 0 0 8-8 8 8 0 0 0-8-8 8 8 0 0 0-8 8 8 8 0 0 0 8 8m0-18a10 10 0 0 1 10 10 10 10 0 0 1-10 10C6.47 22 2 17.5 2 12A10 10 0 0 1 12 2m.5 5v5.25l4.5 2.67-.75 1.23L11 13V7z"/></svg>
                           <span class="md-ellipsis">
                             
-                              24 min read
+                              25 min read
                             
                           </span>
                         </div>
@@ -1473,7 +1473,8 @@
 <p><em>How to build a real-time streaming UI with Python, FastAPI, and HTMX in less than 200 lines.</em></p>
 <p>I remember there was a time, long ago, when building websites was easy. HTML and CSS. It felt simple. Nowadays, Javascript frameworks are everywhere. Relentless change, increasing complexity. This phenomenon is called "Javascript Fatigue" and is all about developers exhausted by chasing the latest frameworks, build tools, libraries, and trying to keep the pace. But with HTMX, developers now have a way to build engaging web applications with greater simplicity and less burnout - and without all the JS hassle.</p>
 <p>And by engaging web applications, I mean something like ChatGPT, in less than 200 lines of code, pure Python and HTML. Like this one:</p>
-<p>Image from author</p>
+<p><img alt="alt text" src="https://cdn-images-1.medium.com/max/1600/1*1MVU3aG1zKrKkg8ZV5cfzQ.gif" />
+Image from author</p>
 <h2 id="a-quick-refresher-on-how-the-web-works">A quick refresher on how the Web works</h2>
 <p>When Tim Berners-Lee created the first web page in 1990, the system he designed was mostly a "read-only" system, that would lead to pages connected between themselves with hyperlinks, which we all know as anchor tags in HTML. HTML 1.0 was therefore relying on one single tag for navigation (there are of course other tags for text structure) and offered simple navigation between pages.</p>
 <div class="language-html highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="cm">&lt;!-- The original web: simple hypermedia --&gt;</span>
@@ -1498,10 +1499,12 @@
 <h2 id="and-then-came-javascript">And then came Javascript</h2>
 <p>JavaScript was originally created to add simple interactions to web pages: form validation, data fetching, and basic animations. But with the introduction of XMLHttpRequest (later known as AJAX), JavaScript evolved into something much more powerful and complex.</p>
 <p>With AJAX, developers could now trigger HTTP requests without the two tags. AJAX allows fetching data from the server, and though XHR can fetch any type of data - including raw HTML fragments, text, or XML - JSON became the de facto data exchange format.</p>
-<p>This means there needs to be an additional step where JSON gets converted to HTML, via a function that renders HTML from JSON. As shown in the example below, we proceed by:
-- fetching JSON data from the /api/users endpoints (the <code>response =&gt; response.json()</code> part)
-- inserting this data into a HTML templates (the <code>const html</code> part)
-- that will then be added to the DOM (the <code>document.getElementById()</code> part)</p>
+<p>This means there needs to be an additional step where JSON gets converted to HTML, via a function that renders HTML from JSON. As shown in the example below, we proceed by:</p>
+<ul>
+<li>fetching JSON data from the /api/users endpoints (the <code>response =&gt; response.json()</code> part)</li>
+<li>inserting this data into a HTML templates (the <code>const html</code> part)</li>
+<li>that will then be added to the DOM (the <code>document.getElementById()</code> part)</li>
+</ul>
 <div class="language-json highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="c1">// The JavaScript way: JSON → HTML conversion</span>
 </span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="kc">fet</span><span class="err">ch(&#39;/api/users&#39;)</span>
 </span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="w">    </span><span class="err">.</span><span class="kc">t</span><span class="err">he</span><span class="kc">n</span><span class="err">(respo</span><span class="kc">nse</span><span class="w"> </span><span class="err">=&gt;</span><span class="w"> </span><span class="err">respo</span><span class="kc">nse</span><span class="err">.jso</span><span class="kc">n</span><span class="err">())</span>
@@ -1515,9 +1518,9 @@
 <p>This rendering involves a tight coupling between the JSON data format and the HTML rendering: if the JSON data format changes, it breaks the HTML rendering function. This point is usually a source of friction between frontend and backend developers: frontend dev builds a UI based on an expected JSON format, backend dev decides to change the format, frontend dev needs to update UI, backend dev changes again, frontend dev changes again, etc.</p>
 <p>Eventually, the industry pivoted heavily toward JSON-driven architectures, giving rise to Single-Page Applications (SPAs). We stopped building websites that navigated from page to page and started building software that lives entirely inside the browser. In this model, the server is reduced to a simple data API, while JavaScript handles the heavy lifting of state management and UI rendering. This is the engine behind React, Angular, and Vue - powerful, but complex.</p>
 <p>Below are some thoughts from an excellent source which I encourage you to read so you can make your mind:</p>
-<p><quote>
+<blockquote>
 "The emerging norm for web development is to build a React single-page application, with server rendering. The two key elements of this architecture are something like:
-– The main UI is built &amp; updated in JavaScript using React or something similar.
+– The main UI is built & updated in JavaScript using React or something similar.
 – The backend is an API that that application makes requests against.
 This idea has really swept the internet. It started with a few major popular websites and has crept into corners like marketing sites and blogs."
 (…) 
@@ -1525,7 +1528,8 @@ But there are also a lot of problems for which I can't see any concrete benefit 
 (…)
 I don't think that everyone's using the SPA pattern for no reason. For large corporations, it allows teams to work independently: the "frontend engineers" can "consume" "APIs" from teams that probably work in a different language and can only communicate through the hierarchy."
 (Tom MacWright, https://macwright.com/2020/05/10/spa-fatigue)
-</quote></p>
+</blockquote>
+
 <h2 id="javascript-fatigue-is-real">Javascript Fatigue is real</h2>
 <p>As the dominance of SPAs grew, so did the number of Javascript frameworks and the complexity associated to it. For developers, this profusion of choices, opinionated frameworks and libraries eventually led to a collective sense of exhaustion called "Javascript Fatigue". Here are some reasons to this Javascript frameworks burn-out:</p>
 <ul>
@@ -1548,7 +1552,8 @@ I don't think that everyone's using the SPA pattern for no reason. For large cor
 <h2 id="a-simple-htmx-demo">A Simple HTMX demo</h2>
 <p>For this article, we will build a little chat with less than 100 lines of Python and HTML. But before that, we will start with a simple demo to show how HTMX works.
 Let's assume we have an API that returns a list of users. We want to click a button to fetch the data and display a list.</p>
-<p>Image from author</p>
+<p><img alt="alt text" src="https://cdn-images-1.medium.com/max/1600/1*Ui4BQj-47PRUlSMf6i-lZA.gif" />
+Image from author</p>
 <p>In the traditional, JS-way, one would probably do like below. Notice how in this case we are using vanilla Javascript, and not even installing Next or Vite with their dozens of Mb of dependencies !</p>
 <div class="language-html highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="cm">&lt;!-- Traditional JavaScript approach --&gt;</span>
 </span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="cp">&lt;!DOCTYPE html&gt;</span>
@@ -1653,7 +1658,8 @@ Let's assume we have an API that returns a list of users. We want to click a but
 <li>a textarea for the user's input</li>
 </ul>
 <p>And guess what, HTMX will take care of sending/receiving the messages! This is what the result will look like:</p>
-<p>Image from author</p>
+<p><img alt="alt text" src="https://cdn-images-1.medium.com/max/1600/1*RnUPEUAUyBeTSrOi2DNqnA.gif" />
+Image from author</p>
 <p>The flow is the following:</p>
 <ul>
 <li>User inputs a query in a textarea</li>
@@ -1753,7 +1759,8 @@ Let's assume we have an API that returns a list of users. We want to click a but
 <li>A Google Search Agent to answer queries with fresh data</li>
 </ul>
 <p>Here is what the final result will look like:</p>
-<p>Image by author</p>
+<p><img alt="alt text" src="https://cdn-images-1.medium.com/max/1600/1*1MVU3aG1zKrKkg8ZV5cfzQ.gif" />
+Image by author</p>
 <h3 id="from-sync-communication-to-async">From sync communication to async</h3>
 <p>What we built previously leveraged very basic web functionalities leveraging forms. Our communication was synchronous, meaning we don't get anything until the server is done. We issue a request, we wait for the full response, and we display it. Between the two, we just…wait.</p>
 <p>But modern chatbots work differently, by providing asynchronous communication capabilities. This is done using streaming: we get updates and partial responses instead of waiting for the full response. This is particularly helpful when the response process takes time, which is typically the case for LLMs when the answer is long.</p>
@@ -2135,6 +2142,7 @@ I add below a little CSS snippet to format code blocks. Indeed, if you ask your 
 </span><span id="__span-21-9"><a id="__codelineno-21-9" name="__codelineno-21-9" href="#__codelineno-21-9"></a><span class="w">    </span><span class="p">}</span>
 </span></code></pre></div>
 <p>You can now also generate code snippets:</p>
+<p><img alt="alt text" src="https://cdn-images-1.medium.com/max/1600/0*B3ZQzTKL1Yytpvuk.png" /></p>
 <h2 id="conclusion">Conclusion</h2>
 <p>With less that 200 LoC, we were able to write a chat with the following worflow, stream a response from the server and display it very nicely by playing with SSE and HTMX. </p>
 <p>Above all, we showed how easy it could be to develop a chatbot app with very little vanilla javascript and mostly, without heavy JS frameworks, just by using Python and HTML. We covered topics such as :</p>
